@@ -1,0 +1,107 @@
+http://morgal.informatik.uni-ulm.de:8000/price/:
+<prices>
+    <description>Charity Tarif</description>
+    <price>
+        <name>Nachts</name>
+        <start>00:00</start>
+        <end>08:00
+        </ned>
+        <cost>1.20</cost>
+    </price>
+    <price>
+        <name>Morgens</name>
+        <start>08:00</start>
+        <end>12:00</end>
+        <cost>1.40</cost>
+    </price>
+    <price>
+        <name>Mittags</name>
+        <start>12:00</start>
+        <end>18:00</end>
+        <cost>1.10</cost>
+    </price>
+    <price>
+        <name>Abends</name>
+        <start>18:00</start>
+        <end>23:59</end>
+        <cost>1.10</cost>
+    </price>
+</prices>
+
+http://morgal.informatik.uni-ulm.de:8000/line/:
+{
+  "description": "Public transport line data endpoint",
+  "urls": [
+    "data/",
+    "stop/",
+    "stop/$id",
+    "stop/$id/departure/"
+  ]
+}
+
+http://morgal.informatik.uni-ulm.de:8000/line/data/:
+{
+    "description": "Network graph as lines (edges) and stops (nodes)",
+    "lines": [
+        {
+            "id": 0,
+            "display": "14",
+            "heading": 9,
+            "trip": [
+                {
+                    "stop": 116,
+                    "time": 0
+                },
+                {
+                    "stop": 88,
+                    "time": 1
+                },
+                ...
+            ]
+        },
+	...
+    ],
+    "stops": [
+        "Neu-Ulm Rathaus",
+        "Wiblingen Reutlinger Straße",
+	...
+    ]
+}
+
+http://morgal.informatik.uni-ulm.de:8000/line/stop/:
+{
+    "description": "list of stops",
+    "stops": [
+        "Neu-Ulm Rathaus",
+        "Wiblingen Reutlinger Straße",
+	...
+    ]
+}
+
+http://morgal.informatik.uni-ulm.de:8000/line/stop/$id
+Beispielantwort für http://morgal.informatik.uni-ulm.de:8000/line/stop/0:
+{
+  "id": 0,
+  "name": "Neu-Ulm Rathaus",
+  "lat": "00.000",
+  "lon": "00.000"
+}
+
+
+http://morgal.informatik.uni-ulm.de:8000/line/stop/$id/departure/
+Beispielantwort für http://morgal.informatik.uni-ulm.de:8000/line/stop/0/departure/:
+[
+  {
+    "line": 7,
+    "display": "5",
+    "time": "11:18",
+    "heading": 93
+  },
+  {
+    "line": 23,
+    "display": "5",
+    "time": "11:23",
+    "heading": 135
+  },
+  ...
+]

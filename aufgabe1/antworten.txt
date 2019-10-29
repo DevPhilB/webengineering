@@ -1,0 +1,27 @@
+a)
+400 Bad Request
+Dies bedeutet, dass die Anfrage so nicht vom Server akzeptiert wird.
+In unserem Fall liegt das an der angegeben Version des Hypertext Transfer Protocols (1.1).
+
+b) Ändern wir dies in 1.0 oder lassen den Teil nach dem / weg:
+"GET / HTTP/1.0" oder "GET /"
+Bekommen wir als Antwort ein JSON-File im Body:
+HTTP/1.1 200 OK
+Server: nginx/1.10.3 (Ubuntu)
+Date: Fri, 25 Oct 2019 08:35:228 GMT
+Content-Type: application/json
+Content-Length: 140
+Connection: close
+
+{
+  "description" : "Welcome to your friendly neighborhood traffic service data server!",
+  "urls" : [
+     "price/",
+     line/"
+  ]
+}
+
+Die 2. Anpassung ist sinnvoll, da wir so flexibel bei der Akzeptanz des Servers sind.
+Die 1. Anpassung ist nur dann sinnvoll, wenn wir die unterstützte Version des Servers kennen.
+
+c) Siehe: api-endpoints.txt
