@@ -95,7 +95,7 @@ public class ClientHandler implements Runnable {
      *            correct result
      */
     public void process(Request request, Response response) {
-        // TODO: assemble the response in a later exercise
+        // TODO: in exercise 3: assemble the response
         System.out
                 .println("Request received. Request handling pending...");
     }
