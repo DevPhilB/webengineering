@@ -115,6 +115,7 @@ public class ClientHandler implements Runnable {
 			PUTHandler.handle(request, response);
 			break;
 		default:
+			response.setResponseCode(405, "Method Not Allowed");
 			break;
 		}
 
