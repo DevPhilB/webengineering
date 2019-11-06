@@ -15,8 +15,9 @@ import de.uniulm.in.ki.webeng.serverscaffold.model.Request;
 import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
 
 /**
- * Handler for client requests Spawned by {@link ServerThread} Created by Markus
- * Brenner on 07.09.2016.
+ * Handler for client requests Spawned by {@link ServerThread}
+ * Created by Markus Brenner on 07.09.2016.
+ * Modified by Alexander Mayer, Philipp Backes & Samuel Fritz
  */
 public class ClientHandler implements Runnable {
 	private final Socket socket;
@@ -95,29 +96,25 @@ public class ClientHandler implements Runnable {
 	 *                 correct result
 	 */
 	public void process(Request request, Response response) {
-		// TODO: in exercise 3: assemble the response
 		switch (request.method) {
 		case "GET":
-			System.out.println("GET HANDLER");
 			GETHandler.handle(request, response);
-			break;
-		case "POST":
-			System.out.println("POST HANDLER");
-			POSTHandler.handle(request, response);
 			break;
 		case "HEAD":
 			HEADHandler.handle(request, response);
 			break;
-		case "DELETE":
-			DELETEHandler.handle(request, response);
+		case "POST":
+			POSTHandler.handle(request, response);
 			break;
 		case "PUT":
 			PUTHandler.handle(request, response);
 			break;
-		default:
+		case "DELETE":
+			DELETEHandler.handle(request, response);
 			break;
+		default: // Handle other HTTP methods
+			response.setResponseCode(405, "Method Not Allowed");
+			response.addHeader("Allow", "GET, HEAD, POST, PUT, DELETE");
 		}
-
-		System.out.println("Request received. Request handling pending...");
 	}
 }

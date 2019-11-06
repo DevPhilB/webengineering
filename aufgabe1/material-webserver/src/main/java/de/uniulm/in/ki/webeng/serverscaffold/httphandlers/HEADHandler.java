@@ -1,10 +1,15 @@
 package de.uniulm.in.ki.webeng.serverscaffold.httphandlers;
 
+import de.uniulm.in.ki.webeng.serverscaffold.MIMEHandler;
+import de.uniulm.in.ki.webeng.serverscaffold.ServerConfiguration;
 import de.uniulm.in.ki.webeng.serverscaffold.model.Request;
 import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
 
+import java.nio.file.Path;
+
 /**
  * Handles HEAD requests Created by Markus Brenner on 12.09.2016.
+ * Modified by Alexander Mayer, Philipp Backes & Samuel Fritz
  */
 public class HEADHandler {
     /**
@@ -17,10 +22,16 @@ public class HEADHandler {
      *            correct reply
      */
     public static void handle(Request request, Response response) {
-        // TODO: implement
-		response.setResponseCode(200, "OK");
-		response.addHeader("Connection","Keep-Alive");
-		response.addHeader("Content-Language","de");
-		// Has no body.
+        String resource = request.resource.substring(1);
+        resource = (resource.length() == 0) ? "index.html" : resource;
+        Path resourcePath = ServerConfiguration.webRoot.resolve(resource);
+        if (!resourcePath.normalize().startsWith(ServerConfiguration.webRoot.normalize())) {
+            response.setResponseCode(401, "Unauthorized");
+            response.addHeader("Connection", "close");
+        } else {
+            response.setResponseCode(200, "OK");
+            response.addHeader("Content-Type", MIMEHandler.getMimeType(resourcePath));
+            response.addHeader("Connection", "Keep-Alive");
+        }
     }
 }

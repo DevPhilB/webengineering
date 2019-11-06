@@ -1,1 +1,1 @@
-Aufgabe 1 ?
+Aufgabe 1 a)-e) vollständig bearbeitet

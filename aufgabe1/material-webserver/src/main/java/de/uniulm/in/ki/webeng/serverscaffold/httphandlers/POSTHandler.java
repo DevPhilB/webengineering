@@ -8,6 +8,7 @@ import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
 
 /**
  * Handles POST requests Created by Markus Brenner on 07.09.2016.
+ * Modified by Alexander Mayer, Philipp Backes & Samuel Fritz
  */
 public class POSTHandler {
 	/**
@@ -23,32 +24,26 @@ public class POSTHandler {
 			String params = null;
 			// check request's encoding style
 			if (request.headers.containsKey("charset")) {
-				// Encoding identified: decode by using the given encoding
-				// scheme.
+				// Encoding identified: decode by using the given encoding scheme.
 				try {
 					params = URLDecoder.decode(new String(request.body), request.headers.get("charset"));
 				} catch (UnsupportedEncodingException e) {
 					// params remains null and default encoding will be used
 				}
 			}
-
 			if (params == null) {
-				// Encoding not identified or unsupported: use deprecated
-				// decoding function
+				// Encoding not identified or unsupported: use deprecated decoding function
 				params = URLDecoder.decode(new String(request.body));
 			}
-			// TODO: implement further
-			// TODO: implement further
-			System.out.println("THIS RESOURCE");
+			// Parse request body
 			String str = new String(request.body);
-			System.out.println("DOTHIS" + str);
 			response.setResponseCode(200, "OK");
 			response.addHeader("Content-Type", "text/plain");
 			response.addHeader("Connection", "Keep-Alive");
 			String message = "Hallo " + str.substring(str.indexOf("=") + 1);
 			response.setBody(message.getBytes());
 		} else {
-			// TODO: set response code suitably
+			response.setResponseCode(404, "Not Found");
 		}
 	}
 }
