@@ -40,7 +40,7 @@ public class GETHandler {
 				// TODO Auto-generated catch block
 				response.setResponseCode(400, "Not found");
 				response.addHeader("Connection", "close");
-				e.printStackTrace();
+			//	e.printStackTrace();
 			}
 		}
 	}

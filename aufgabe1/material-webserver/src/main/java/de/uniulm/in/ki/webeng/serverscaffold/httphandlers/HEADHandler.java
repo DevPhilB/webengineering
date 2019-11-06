@@ -18,5 +18,9 @@ public class HEADHandler {
      */
     public static void handle(Request request, Response response) {
         // TODO: implement
+		response.setResponseCode(200, "OK");
+		response.addHeader("Connection","Keep-Alive");
+		response.addHeader("Content-Language","de");
+		// Has no body.
     }
 }
