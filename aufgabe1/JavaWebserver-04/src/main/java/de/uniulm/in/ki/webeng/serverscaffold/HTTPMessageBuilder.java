@@ -1,9 +1,10 @@
 package de.uniulm.in.ki.webeng.serverscaffold;
 
-import de.uniulm.in.ki.webeng.serverscaffold.model.Request;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import de.uniulm.in.ki.webeng.serverscaffold.model.Request;
+import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
 
 /**
  * Assembles a request byte by byte
@@ -13,7 +14,7 @@ import java.util.Map;
 public class HTTPMessageBuilder {
     private String head = "";
     private byte[] body = new byte[0];
-    private Request h = null;
+    private Request req = null;
     private int remaining = -1;
     private Map<String, String> headers = null;
 
@@ -68,11 +69,22 @@ public class HTTPMessageBuilder {
      *         completed yet
      */
     public Request getRequest() {
-        if (h == null) {
+        if (req == null) {
             String method = head.substring(0, head.indexOf("\r\n"));
             String[] first = method.split(" ");
-            h = new Request(first[0], first[1], first[2], headers, body);
+            req = new Request(first[0], first[1], first[2], headers, body);
         }
-        return h;
+        return req;
+    }
+
+    /**
+     * Obtains the assembled response
+     * 
+     * @return The assembled response or null, if the response has not been
+     *         completed yet
+     */
+    public Response getResponse() {
+        // TODO Implement
+        return null;
     }
 }
