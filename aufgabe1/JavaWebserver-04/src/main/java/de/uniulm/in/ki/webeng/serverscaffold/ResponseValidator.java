@@ -1,6 +1,6 @@
 package de.uniulm.in.ki.webeng.serverscaffold;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 
 import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
@@ -16,8 +16,21 @@ public class ResponseValidator {
      *         cache
      */
     public static Response validate(Response remoteResponse) {
-        // TODO implement
-        return null;
+        Response response = null;
+
+        if(remoteResponse == null || !isValidXML(remoteResponse)) {
+            response = loadCache();
+            if(response == null) {
+                response = new Response();
+                response.setResponseCode(500, "Internal Server Error");
+            } else {
+                return transformResponse(response);
+            }
+        } else {
+            saveCache(remoteResponse);
+            response = transformResponse(remoteResponse);
+        }
+        return response;
     }
 
     /**
@@ -32,7 +45,7 @@ public class ResponseValidator {
             }
         }
     }
-    
+
     /**
      * Stores a response to the local cache
      *
@@ -40,7 +53,22 @@ public class ResponseValidator {
      *            The original response
      */
     public static void saveCache(Response remoteResponse) {
-        // TODO implement
+        try {
+            File file = ServerConfiguration.cachePath.toFile();
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(remoteResponse);
+
+            fos.close();
+            oos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -49,8 +77,21 @@ public class ResponseValidator {
      * @return The cached response
      */
     public static Response loadCache() {
-        // TODO implement
-        return null;
+        Response response = null;
+
+        try {
+            FileInputStream fi = new FileInputStream(ServerConfiguration.cachePath.toFile());
+            ObjectInputStream oi = new ObjectInputStream(fi);
+
+            response = (Response) oi.readObject();
+
+            oi.close();
+            fi.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return response;
     }
 
     /**

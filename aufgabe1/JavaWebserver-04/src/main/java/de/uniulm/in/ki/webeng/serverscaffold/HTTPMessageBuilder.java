@@ -1,8 +1,5 @@
 package de.uniulm.in.ki.webeng.serverscaffold;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,30 +88,15 @@ public class HTTPMessageBuilder {
         if (res == null) {
             String method = head.substring(0, head.indexOf("\r\n"));
             String[] first = method.split(" ");
-            res = new Response();
             int httpStatusCode = Integer.parseInt(first[1]);
             if(httpStatusCode != 200) {
-                try {
-                    res.setResponseCode(200, "OK");
-                    headers.forEach((String key, String value) -> res.addHeader(key, value));
-                    // TODO Move logic to ResponseValidator
-                    res.setBody(Paths.get("cache.sav"));
-                } catch(Exception e) {
-                    System.out.println(e.getMessage());
-                    res.setResponseCode(500, "Internal Server Error");
-                }
+                res = ResponseValidator.validate(res);
             } else {
-                // TODO Check if XML is valid/move logic to ResponseValidator
+                res = new Response();
                 res.setResponseCode(httpStatusCode, first[2]);
                 headers.forEach((String key, String value) -> res.addHeader(key, value));
                 res.setBody(body);
-                try {
-                    Path file = Paths.get("cache.sav");
-                    Files.write(file, res.getBody());
-                } catch(Exception e) {
-                    System.out.println(e.getMessage());
-                    res.setResponseCode(500, "Internal Server Error");
-                }
+                res = ResponseValidator.validate(res);
             }
         }
         return res;
