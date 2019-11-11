@@ -1,6 +1,6 @@
 package de.uniulm.in.ki.webeng.serverscaffold;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 
 import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
@@ -40,7 +40,22 @@ public class ResponseValidator {
      *            The original response
      */
     public static void saveCache(Response remoteResponse) {
-        // TODO implement
+        try {
+            File file = ServerConfiguration.cachePath.toFile();
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(remoteResponse);
+
+            fos.close();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -49,8 +64,23 @@ public class ResponseValidator {
      * @return The cached response
      */
     public static Response loadCache() {
-        // TODO implement
-        return null;
+        Response response = null;
+
+        try {
+            FileInputStream fi = new FileInputStream(ServerConfiguration.cachePath.toFile());
+            ObjectInputStream oi = new ObjectInputStream(fi);
+
+            response = (Response) oi.readObject();
+
+            oi.close();
+            fi.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return response;
     }
 
     /**
