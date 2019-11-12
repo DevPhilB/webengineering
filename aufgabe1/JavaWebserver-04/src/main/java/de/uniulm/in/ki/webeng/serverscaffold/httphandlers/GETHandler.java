@@ -3,6 +3,8 @@ package de.uniulm.in.ki.webeng.serverscaffold.httphandlers;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import de.uniulm.in.ki.webeng.serverscaffold.HTTPFetch;
+import de.uniulm.in.ki.webeng.serverscaffold.HTTPMessageBuilder;
 import de.uniulm.in.ki.webeng.serverscaffold.MIMEHandler;
 import de.uniulm.in.ki.webeng.serverscaffold.ServerConfiguration;
 import de.uniulm.in.ki.webeng.serverscaffold.model.Request;
@@ -15,15 +17,11 @@ public class GETHandler {
     /**
      * Handles a request
      *
-     * @param request
-     *            The request issued by a client
-     * @param response
-     *            An empty response object, which is to be filled with the
-     *            correct reply
+     * @param request  The request issued by a client
+     * @param response An empty response object, which is to be filled with the
+     *                 correct reply
      */
     public static void handle(Request request, Response response) {
-        // TODO adapt, hint: check the setTo(Response other) method in the 
-        // Response class for changing the passed in response object
         try {
             String resource = request.resource.substring(1);
             resource = (resource.length() == 0) ? "index.html" : resource;
@@ -31,6 +29,8 @@ public class GETHandler {
             if (!resourcePath.normalize()
                     .startsWith(ServerConfiguration.webRoot.normalize())) {
                 response.setResponseCode(403, "Forbidden");
+            } else if (resource.startsWith(ServerConfiguration.magicURL)) {
+                response.setTo(HTTPFetch.fetchRemote());
             } else {
                 response.setBody(resourcePath);
                 response.addHeader("Content-Type",

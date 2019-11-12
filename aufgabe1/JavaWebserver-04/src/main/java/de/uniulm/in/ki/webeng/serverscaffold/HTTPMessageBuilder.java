@@ -15,6 +15,7 @@ public class HTTPMessageBuilder {
     private String head = "";
     private byte[] body = new byte[0];
     private Request req = null;
+    private Response res = null;
     private int remaining = -1;
     private Map<String, String> headers = null;
 
@@ -84,7 +85,20 @@ public class HTTPMessageBuilder {
      *         completed yet
      */
     public Response getResponse() {
-        // TODO Implement
-        return null;
+        if (res == null) {
+            String method = head.substring(0, head.indexOf("\r\n"));
+            String[] first = method.split(" ");
+            int httpStatusCode = Integer.parseInt(first[1]);
+            if(httpStatusCode != 200) {
+                res = ResponseValidator.validate(res);
+            } else {
+                res = new Response();
+                res.setResponseCode(httpStatusCode, first[2]);
+                headers.forEach((String key, String value) -> res.addHeader(key, value));
+                res.setBody(body);
+                res = ResponseValidator.validate(res);
+            }
+        }
+        return res;
     }
 }

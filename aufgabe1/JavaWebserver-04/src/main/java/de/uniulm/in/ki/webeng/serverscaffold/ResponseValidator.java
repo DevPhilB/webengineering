@@ -16,8 +16,21 @@ public class ResponseValidator {
      *         cache
      */
     public static Response validate(Response remoteResponse) {
-        // TODO implement
-        return null;
+        Response response = null;
+
+        if(remoteResponse == null || !isValidXML(remoteResponse)) {
+            response = loadCache();
+            if(response == null) {
+                response = new Response();
+                response.setResponseCode(500, "Internal Server Error");
+            } else {
+                return transformResponse(response);
+            }
+        } else {
+            saveCache(remoteResponse);
+            response = transformResponse(remoteResponse);
+        }
+        return response;
     }
 
     /**
@@ -32,7 +45,6 @@ public class ResponseValidator {
             }
         }
     }
-    
     /**
      * Stores a response to the local cache
      *
@@ -53,7 +65,7 @@ public class ResponseValidator {
 
             fos.close();
             oos.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -74,9 +86,7 @@ public class ResponseValidator {
 
             oi.close();
             fi.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
