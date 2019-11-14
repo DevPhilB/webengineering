@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.uniulm.in.ki.webeng</groupId>
-    <artifactId>JavaWebserver-04</artifactId>
+    <artifactId>JavaWebserver-05</artifactId>
     <version>1.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,6 +99,5 @@
             <version>6.1.25</version>
         </dependency>
     </dependencies>
-
 
 </project>

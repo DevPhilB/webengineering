@@ -1,10 +1,10 @@
 package de.uniulm.in.ki.webeng.serverscaffold;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import de.uniulm.in.ki.webeng.serverscaffold.model.Request;
 import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Assembles a request byte by byte
@@ -15,7 +15,7 @@ public class HTTPMessageBuilder {
     private String head = "";
     private byte[] body = new byte[0];
     private Request req = null;
-    private Response res = null;
+    private Response resp = null;
     private int remaining = -1;
     private Map<String, String> headers = null;
 
@@ -85,20 +85,21 @@ public class HTTPMessageBuilder {
      *         completed yet
      */
     public Response getResponse() {
-        if (res == null) {
+        if (resp == null) {
             String method = head.substring(0, head.indexOf("\r\n"));
-            String[] first = method.split(" ");
-            int httpStatusCode = Integer.parseInt(first[1]);
-            if(httpStatusCode != 200) {
-                res = ResponseValidator.validate(res);
-            } else {
-                res = new Response();
-                res.setResponseCode(httpStatusCode, first[2]);
-                headers.forEach((String key, String value) -> res.addHeader(key, value));
-                res.setBody(body);
-                res = ResponseValidator.validate(res);
+            String[] split = method.split(" ");
+            String code = split[1];
+            StringBuilder message = new StringBuilder();
+            for (int i = 2; i < split.length; i++) {
+                message.append(split[i]);
+            }
+            resp = new Response();
+            resp.setResponseCode(Integer.parseInt(code), message.toString());
+            resp.setBody(body);
+            for (Map.Entry<String, String> e : headers.entrySet()) {
+                resp.addHeader(e.getKey(), e.getValue());
             }
         }
-        return res;
+        return resp;
     }
 }
