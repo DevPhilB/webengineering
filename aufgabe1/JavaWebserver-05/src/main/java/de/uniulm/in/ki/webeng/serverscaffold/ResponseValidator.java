@@ -1,17 +1,21 @@
 package de.uniulm.in.ki.webeng.serverscaffold;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.file.Files;
 
 import org.w3c.dom.Document;
 
 import de.uniulm.in.ki.webeng.serverscaffold.model.Response;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 public class ResponseValidator {
     /**
@@ -102,8 +106,18 @@ public class ResponseValidator {
     }
 
     private static Document extractXML(Response remoteResponse) {
-        // TODO implement
-        return null;
+        DocumentBuilder documentBuilder = null;
+        InputStream bodyStream = null;
+        Document document = null;
+        try {
+            documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            bodyStream = new ByteArrayInputStream(remoteResponse.getBody());
+            document = documentBuilder.parse(bodyStream);
+            bodyStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return document;
     }
 
     /**
@@ -114,13 +128,35 @@ public class ResponseValidator {
      * @return True, if the provided XML is valid
      */
     public static boolean isValidXML(Response remoteResponse) {
-        Document doc = extractXML(remoteResponse);
-        if (doc == null)
+        SchemaFactory schemaFactory = null;
+        Source schemaSource = null;
+        Schema schema = null;
+        Validator validator = null;
+        Document document = extractXML(remoteResponse);
+        if (document == null)
             return false;
 
-        // create a validator using the schema
-        File schemaFile = new File("schema.xsd"); // TODO add your schema to the project root folder
-        // TODO implement
+        File schemaFile = new File("PriceSchema.xsd");
+        try {
+            schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            // Load the XML schema
+            schemaSource = new StreamSource(schemaFile);
+            schema = schemaFactory.newSchema(schemaSource);
+
+            // Create a Validator instance, which can be used to validate an instance document
+            validator = schema.newValidator();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Validate the DOM tree
+        try {
+            validator.validate(new DOMSource(document));
+        } catch (Exception e) {
+            // XML is invalid!
+            return false;
+        }
+
         return true;
     }
 
