@@ -1,0 +1,51 @@
+<head>
+    <title> Hallo </title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Web Engineering Routenplaner</h1>
+    </header>
+    <!-- 1b)  input boxes --->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="stops.html">Stops</a>
+    </nav>
+    <main>
+
+
+
+        <!-- 1d)  input boxes --->
+        <section>
+
+            <form action="/action_page.php">
+                <input type="text" name="start" placeholder="Starthaltestelle eingeben" list="haltestelle">
+                <!-- 1f)  input boxes --->
+                <datalist id="haltestelle">
+                    <option value="Sesamstraße">
+                    <option value="Uni Süd">
+                    <option value="Jägerstraße">
+                    <option value="Safranstraße">
+                </datalist>
+
+                <input type="text" name="end" placeholder="Endhaltestelle eingeben">
+                <input type="submit" value="->">
+            </form>
+        </section>
+
+        <!-- 1e)  side box --->
+        <aside>
+            <h2>Favorit: Haltestelle</h2>
+            <ul>
+                <li>16:03 Line 5 (Wissenschaftsstadt)</li>
+                <li>16:10 Line 3 (Wiblingen)</li>
+            </ul>
+        </aside>
+
+    </main>
+    <!-- 1c)  footer --->
+    <footer>
+        Copyright WebEng 2019, P group.
+    </footer>
+</body>

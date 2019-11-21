@@ -1,0 +1,41 @@
+<head>
+    <title> Web Engineering </title>
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" -->
+</head>
+
+<body>
+
+    <header>
+        <h1>Web Engineering Routenplaner</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="stops.html">Stops</a>
+    </nav>
+
+    <main>
+
+        <img src="map.png" alt="Map">
+        <section>
+            <!-- input 1g) -->
+            <form action="/action_page.php">
+                <input type="text" name="fname" placeholder="Filter"><br>
+            </form>
+        </section>
+
+        <!-- list 1h) -->
+        <section>
+            <form action="/action_page.php">
+                <ul style="list-style-type:none;">
+                    <li>Schaffhausen<input type="checkbox" name="vehicle1" value="Bike"></li>
+                    <li>Heiringen<input type="checkbox" name="vehicle2" value="Car"></li>
+                    <li>Ulm<input type="checkbox" name="vehicle3" value="Boat"> </li>
+                </ul>
+            </form>
+        </section>
+    </main>
+    <footer>
+        Copyright WebEng 2019, P group.
+    </footer>
+</body>
