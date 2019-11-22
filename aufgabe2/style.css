@@ -1,0 +1,95 @@
+/* 2b)  navigation */
+.selectedSite {
+    background: #00811e;
+}
+
+nav a {
+    background: #444444;
+    color: white;
+    padding: 3px;
+}
+
+nav {
+    background: #444444;
+    padding: 10px;
+}
+
+header {
+    background: #444444;
+    color: white;
+    padding: 10px;
+}
+
+
+
+
+/* all inputs */
+input {
+
+    margin: 10px;
+}
+
+/* 2c) nebeneinander */
+main {
+    display: flex;
+    padding-bottom: 30px;
+}
+
+body {
+    display: grid;
+    /* 2e) */
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: 100;
+    font-size: 10px;
+    font-family: fantasy;
+    word-spacing: 1px;
+    white-space: nowrap;
+    text-shadow: 2px 2px 8px #FF0000;
+    text-decoration: underline;
+    text-decoration-color: gray;
+}
+
+
+
+footer {
+    background: #444444;
+    color: white;
+    padding: 12px;
+}
+
+
+/* stops postions */
+.leftTop {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftDown {
+    display: flex;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 2d) stops list */
+.list {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.left input {
+    margin: 0px;
+    float: right;
+}
+
+.list li {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 12px;
+}
