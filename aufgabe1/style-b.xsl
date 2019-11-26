@@ -12,7 +12,7 @@
           "start": "<xsl:value-of select="start"/>",
           "end": "<xsl:value-of select="end"/>",
           "cost": "<xsl:value-of select="cost"/>"
-        }<xsl:if test="position() != last()">,</xsl:if></xsl:for-each>
+        }</xsl:for-each>
       ]
     }
 }
