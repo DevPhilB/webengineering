@@ -1,19 +1,17 @@
 package de.uniulm.in.ki.webeng.serverscaffold;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.file.Files;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
@@ -171,16 +169,24 @@ public class ResponseValidator {
      */
     public static Response transformResponse(Response remoteResponse) {
         Document doc = extractXML(remoteResponse);
-
-        // load the XSLT
-        // TODO implement
-
-        // setup and perform transformation
-        // TODO implement
-
-        // adapt remoteResponse body and content-type header
-        // TODO implement
-
+        try {
+            // Load the XSLT
+            Source xslSource = new StreamSource(new File("style.xsl"));
+            Source xmlSource = new DOMSource(doc);
+            // Set up and perform transformation
+            TransformerFactory factory  = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer(xslSource);
+            File json = new File("price.json");
+            StreamResult result = new StreamResult(json);
+            transformer.transform(xmlSource, result);
+            // Adapt remoteResponse body and content-type header
+            remoteResponse.setBody(Files.readAllBytes(json.toPath()));
+            remoteResponse.addHeader("Content-Length", String.valueOf(remoteResponse.getBody().length));
+            remoteResponse.addHeader("Content-Type", "application/json");
+        } catch (Exception e) {
+            // Handle all different exceptions
+            e.printStackTrace();
+        }
         return remoteResponse;
     }
 }
