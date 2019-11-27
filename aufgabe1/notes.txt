@@ -1,0 +1,4 @@
+Aufgabe 1 a)
+<xsl:for-each select="price"></xsl:for-each> oder <xsl:copy-of select="price"/>
+
+c) Es ist das letzte <price>... </price> Element
