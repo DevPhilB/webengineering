@@ -1,0 +1,50 @@
+<head>
+    <title> Hallo </title>
+    <!-- 2a) style link --->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Web Engineering Routenplaner</h1>
+    </header>
+    <nav>
+        <a href="index.html" class="selectedSite">Home</a>
+        <a href="stops.html">Stops</a>
+    </nav>
+    <main>
+        <section>
+
+            <form>
+                <input type="text" name="start" placeholder="Starthaltestelle eingeben" list="haltestelle">
+                <!-- 1f)  input boxes --->
+                <datalist id="haltestelle">
+                    <option value="Sesamstraße">
+                    <option value="Uni Süd">
+                    <option value="Jägerstraße">
+                    <option value="Safranstraße">
+                </datalist>
+
+                <input type="text" name="end" placeholder="Endhaltestelle eingeben">
+                <input type="submit" value="->">
+                <br />
+                <output name="answer">Linie 15 (Ulm Willy-Brandt-Platz): <br />
+                    Ulm Universitaets West (13:36) -> Ulm Willy-Brandt-Platz (14:04)
+                </output>
+            </form>
+        </section>
+        <aside>
+            <h2>Favorit: Haltestelle</h2>
+            <ul>
+                <li>16:03 Line 5 (Wissenschaftsstadt)</li>
+                <li>16:10 Line 3 (Wiblingen)</li>
+            </ul>
+        </aside>
+
+
+    </main>
+    <footer>
+        Copyright WebEng 2019, P group.
+    </footer>
+</body>

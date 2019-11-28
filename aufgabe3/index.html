@@ -1,0 +1,54 @@
+<head>
+    <!-- bootstrap style -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title> Hallo </title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Web Engineering Routenplaner</h1>
+    </header>
+    <!-- 1.bs nav -->
+    <nav class="nav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="stops.html">Stops</a>
+    </nav>
+    <main>
+
+        <aside>
+            <h2>Favorit: Haltestelle</h2>
+            <ul>
+                <li>16:03 Line 5 (Wissenschaftsstadt)</li>
+                <li>16:10 Line 3 (Wiblingen)</li>
+            </ul>
+        </aside>
+
+        <section>
+
+            <form>
+                <!-- 2.bs input style -->
+                <input type="text" name="start" placeholder="Starthaltestelle eingeben" list="haltestelle" class="form-control">
+                <datalist id="haltestelle">
+                    <option value="Sesamstraße">
+                    <option value="Uni Süd">
+                    <option value="Jägerstraße">
+                    <option value="Safranstraße">
+                </datalist>
+
+                <input type="text" name="end" placeholder="Endhaltestelle eingeben">
+                <!-- 3.bs button -->
+                <input type="submit" value="->" class="btn btn-primary">
+                <br />
+                <output name="answer">Linie 15 (Ulm Willy-Brandt-Platz): <br />
+                    Ulm Universitaets West (13:36) -> Ulm Willy-Brandt-Platz (14:04)
+                </output>
+            </form>
+
+        </section>
+    </main>
+    <!-- 4.bs aleart footer -->
+    <footer class="alert alert-primary" role="alert">
+        Copyright WebEng 2019, P group.
+    </footer>
+</body>
