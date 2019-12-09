@@ -1,11 +1,104 @@
-main{
+main {
     background-color: white;
     border: 1px solid black;
     width: 80%;
     height: 2000px;
 }
 
-header{
+header {
     text-align: center;
     background-color: forestgreen;
+}
+
+main {
+    /* 2a ) mittig zentrieren */
+    margin: 0 auto;
+}
+
+
+
+/*2b) anpassen der Kindelemente*/
+.minibox {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.minibox :nth-child(1) {
+    background-color: grey;
+    width: 70%;
+    height: 30%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.minibox :nth-child(2) {
+    background-color: yellow;
+    height: 70%;
+    width: 30%;
+    position: absolute;
+    left: 70%;
+    top: 0%;
+}
+
+.minibox :nth-child(3) {
+    background-color: red;
+    height: 70%;
+    width: 30%;
+    position: absolute;
+    left: 0%;
+    top: 30%;
+}
+
+.minibox :nth-child(4) {
+    background-color: aqua;
+    width: 70%;
+    height: 30%;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+}
+
+/* 2c) positionierung beim header */
+
+header :nth-child(1) {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
+header :nth-child(3) {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+}
+
+/* 2d) sticky header */
+header {
+
+    position: sticky;
+    top: 0%;
+}
+
+/* 2e) ? verschoben? ist bei mir nicht verdeckt */
+
+main {
+    margin-top: 100px;
+}
+
+
+/* 2f) z koordinate */
+header {
+    z-index: 10;
+}
+
+main {
+    z-index: 5;
+}
+
+/* 2g) box bar  */
+.boxbar {
+    position: sticky;
+    top: 200px;
 }
