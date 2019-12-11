@@ -25,12 +25,12 @@ $preprocessed = explode(" ", $input);
 function process($preprocessed, $functionTable) {
     $operationStack = array();
     $operandStack = array();
-    $pendingOperand = true;
+    $pendingOperand = false;
     $operatorSymbol = "";
     $operatorName = "";
     $operand_1 = 0;
     $operand = 0;
-    for($i = 0; $i < count($preprocessed); ++$i) {
+    for($i = 0; $i < count($preprocessed); $i++) {
         if(array_key_exists($preprocessed[$i], $functionTable)) {
             array_push($operationStack, $preprocessed[$i]);
             $pendingOperand = false;
@@ -38,8 +38,8 @@ function process($preprocessed, $functionTable) {
             $operand = $preprocessed[$i];
             if($pendingOperand) {
                 while(!empty($operandStack)) {
-                    $operand_1 = array_shift($operandStack);
-                    $operatorSymbol = array_shift($operationStack);
+                    $operand_1 = array_pop($operandStack);
+                    $operatorSymbol = array_pop($operationStack);
                     $operatorName = $functionTable[$operatorSymbol];
                     switch($operatorName) {
                         case "add":
@@ -64,6 +64,6 @@ function process($preprocessed, $functionTable) {
     return $operandStack[0];
 };
 // 2. b)
-//echo ((((1 + 1) + 7) - 15) / 3) * ((1 + 1) + 2);
-echo process($preprocessed, $functionTable);
+$solution = process($preprocessed, $functionTable);
+printf("%s", "Solution for '- * / 15 - 7 + 1 1 3 + 2 + 1 1' = $solution");
 ?>

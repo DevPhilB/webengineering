@@ -23,7 +23,9 @@ $functionTable = array(
 $input = "- * / 15 - 7 + 1 1 3 + 2 + 1 1";
 $preprocessed = explode(" ", $input);
 
-// 3. d)
-$node = new ArithmeticNode($preprocessed, $functionTable);
-echo $node->getValue();
+// 3. d) TODO
+$arithmeticNode = new ArithmeticNode($preprocessed, $functionTable);
+print_r($arithmeticNode);
+$result = $arithmeticNode->getValue();
+printf("%s", "Result for '- * / 15 - 7 + 1 1 3 + 2 + 1 1' = $result");
 ?>

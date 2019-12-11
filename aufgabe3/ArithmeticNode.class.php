@@ -10,25 +10,18 @@ class ArithmeticNode {
         $frontChar = array_shift($inputArray);
         if(array_key_exists($frontChar, $functionTable)) {
             $value = $functionTable[$frontChar];
-            $firstOperand = array_shift($inputArray);
-            $secondOperand = array_shift($inputArray);
-            if(empty($inputArray)) {
-                return $this;
-            }
-            new ArithmeticNode($inputArray, $functionTable);
+            $firstOperand = new ArithmeticNode($inputArray, $functionTable);
+            $secondOperand = new ArithmeticNode($inputArray, $functionTable);
         } else {
             $value = $frontChar;
             $firstOperand = null;
             $secondOperand = null;
-            if(empty($inputArray)) {
-                return $this;
-            }
-            new ArithmeticNode($inputArray, $functionTable);
         }
     }
     
     // 3. c)
-    function getValue() {
+    public function getValue() {
+        printf("%s", "Value is $value \n");
         if(gettype($value == "integer")) {
             return $value;
         } else {
