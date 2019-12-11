@@ -1,23 +1,29 @@
 <?php
+// 1. b)
 class Line {
-    // 1. b)
-    private $id = 0;
-    private $display = "";
-    private $heading = 0;
+    private $id;
+    private $display;
+    private $heading;
+
+    public function __constructor($id, $display, $heading) {
+        $this->id = $id;
+        $this->display = $display;
+        $this->heading = $heading;
+    }
 
     // Getter
     public function getId() {
-        return $id;
+        return $this->id;
     }
 
     // Getter
     public function getDisplay() {
-        return $display;
+        return $this->display;
     }
 
     // Getter
     public function getHeading() {
-        return $heading;
+        return $this->heading;
     }
 }
 ?>

@@ -1,23 +1,31 @@
 <?php
+include 'Node.class.php';
+include 'Line.class.php';
+// 1. c)
 class Edge {
-    // 1. c)
-    private $endNode = null;
-    private $cost = 0;
-    private $line = null; // Line
+    private $endNode; // Node
+    private $cost;
+    private $line; // Line
+
+    public function __constructor($id, $cost, $line) {
+        $this->endNode = new Node($id);
+        $this->cost = $cost;
+        $this->line = $line;
+    }
 
     // Getter
     public function getEndNode() {
-        return $endNode;
+        return $this->endNode;
     }
 
     // Getter
     public function getCost() {
-        return $cost;
+        return $this->cost;
     }
 
     // Getter
     public function getLine() {
-        return $line;
+        return $this->line;
     }
 }
 ?>

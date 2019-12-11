@@ -1,23 +1,30 @@
 <?php
+include 'Line.class.php';
+// 2. a)
 class PathNode {
-    // 2. a)
-    private $id = 0;
-    private $cost = 0;
-    private $line = null; // Line
+    private $id;
+    private $cost;
+    private $line; // <Line>
+
+    public function __constructor($id, $cost, $line) {
+        $this->id = $id;
+        $this->cost = $cost;
+        $this->line = $line;
+    }
 
     // Getter
     public function getId() {
-        return $id;
+        return $this->id;
     }
 
     // Getter
     public function getCost() {
-        return $cost;
+        return $this->cost;
     }
 
     // Getter
     public function getLine() {
-        return $line;
+        return $this->line;
     }
 }
 ?>

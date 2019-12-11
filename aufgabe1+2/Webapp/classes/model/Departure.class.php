@@ -1,23 +1,29 @@
 <?php
+// 1. c)
 class Departure {
-    // 1. c)
-    private $line = 0;
-    private $display = "";
-    private $time = null; // DateTime
+    private $line;
+    private $display;
+    private $time; // DateTime
+
+    public function __constructor($line, $display, $time) {
+        $this->line = $line;
+        $this->display = $display;
+        $this->time = $time;
+    }
 
     // Getter
     public function getLine() {
-        return $line;
+        return $this->line;
     }
 
     // Getter
     public function getDisplay() {
-        return $display;
+        return $this->display;
     }
 
     // Getter
     public function getTime() {
-        return $time;
+        return $this->time;
     }
 }
 ?>

@@ -1,21 +1,31 @@
 <?php
+include 'Edge.class.php';
+// 1. a)
 class Node {
-    // 1. a)
-    private $nodeID = 0;
-    private $edges = array(); // List<Edge>
+    private $nodeID;
+    private $edges; // List<Edge>
+
+    public function __constructor($nodeId) {
+        $this->nodeID = $nodeId;
+        $this->edges = array();
+    }
 
     public function addEdge($edge) {
-        // TODO
+        array_push($edges, $edge);
     }
 
     public function getEdge($endNode) {
-        // TODO
-        return;
+        foreach($this->$edges as $edge) {
+            if($edge->getEndNode() == $endNode) {
+                return $edge->getEndNode();
+            }
+        }
+        return null;
     }
 
     // Getter
     public function getId() {
-        return $nodeID;
+        return $this->$nodeID;
     }
 }
 ?>
