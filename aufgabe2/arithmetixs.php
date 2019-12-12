@@ -41,20 +41,7 @@ function process($preprocessed, $functionTable) {
                     $operand_1 = array_pop($operandStack);
                     $operatorSymbol = array_pop($operationStack);
                     $operatorName = $functionTable[$operatorSymbol];
-                    switch($operatorName) {
-                        case "add":
-                            $operand = add($operand_1, $operand);
-                            break;
-                        case "sub":
-                            $operand = sub($operand_1, $operand);
-                            break;
-                        case "mul":
-                            $operand = mul($operand_1, $operand);
-                            break;
-                        case "div":
-                            $operand = div($operand_1, $operand);
-                            break;
-                    }
+                    $operand = $operatorName($operand_1, $operand);
                 }
             }
             array_push($operandStack, $operand);

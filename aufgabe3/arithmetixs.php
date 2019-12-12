@@ -1,5 +1,5 @@
 <?php
-include 'ArithmeticNode.class.php';
+include_once 'ArithmeticNode.class.php';
 
 // From 1.
 function add($param1, $param2) {
@@ -24,8 +24,7 @@ $input = "- * / 15 - 7 + 1 1 3 + 2 + 1 1";
 $preprocessed = explode(" ", $input);
 
 // 3. d) TODO
-$arithmeticNode = new ArithmeticNode($preprocessed, $functionTable);
-print_r($arithmeticNode);
-$result = $arithmeticNode->getValue();
+$arithmeticTree = new ArithmeticNode($preprocessed, $functionTable);
+$result = $arithmeticTree->getValue();
 printf("%s", "Result for '- * / 15 - 7 + 1 1 3 + 2 + 1 1' = $result");
 ?>
