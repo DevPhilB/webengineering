@@ -22,8 +22,9 @@ $functionTable = array(
 );
 $input = "- * / 15 - 7 + 1 1 3 + 2 + 1 1";
 $preprocessed = explode(" ", $input);
+//
 
-// 3. d) TODO
+// 3. d)
 $arithmeticTree = new ArithmeticNode($preprocessed, $functionTable);
 $result = $arithmeticTree->getValue();
 printf("%s", "Result for '- * / 15 - 7 + 1 1 3 + 2 + 1 1' = $result");

@@ -20,6 +20,7 @@ $functionTable = array(
 );
 $input = "- * / 15 - 7 + 1 1 3 + 2 + 1 1";
 $preprocessed = explode(" ", $input);
+//
 
 // 2. a)
 function process($preprocessed, $functionTable) {
