@@ -1,5 +1,5 @@
 <?php
-include 'Line.class.php';
+include_once 'Line.class.php';
 // 2. a)
 class PathNode {
     private $id;

@@ -1,5 +1,5 @@
 <?php
-include 'Edge.class.php';
+include_once 'Edge.class.php';
 // 1. a)
 class Node {
     private $nodeID;
@@ -11,7 +11,7 @@ class Node {
     }
 
     public function addEdge($edge) {
-        array_push($edges, $edge);
+        array_push($this->$edges, $edge);
     }
 
     public function getEdge($endNode) {

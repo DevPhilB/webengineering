@@ -1,6 +1,6 @@
 <?php
-include 'Node.class.php';
-include 'Line.class.php';
+include_once 'Node.class.php';
+include_once 'Line.class.php';
 // 1. d)
 class Graph {
     private $nodes; // List<Node>
