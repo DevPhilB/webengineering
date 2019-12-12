@@ -1,21 +1,21 @@
 <?php
 class ArithmeticNode {
     // 3. a)
-    private $value = null;
-    private $firstOperand = null;
-    private $secondOperand = null;
+    private $value;
+    private $firstOperand;
+    private $secondOperand;
 
     // 3. b)
     public function __construct(&$inputArray, $functionTable) {
         $frontChar = array_shift($inputArray);
         if(array_key_exists($frontChar, $functionTable)) {
-            $value = $functionTable[$frontChar];
-            $firstOperand = new ArithmeticNode($inputArray, $functionTable);
-            $secondOperand = new ArithmeticNode($inputArray, $functionTable);
+            $this->$value = $functionTable[$frontChar];
+            $this->$firstOperand = new ArithmeticNode($inputArray, $functionTable);
+            $this->$secondOperand = new ArithmeticNode($inputArray, $functionTable);
         } else {
-            $value = $frontChar;
-            $firstOperand = null;
-            $secondOperand = null;
+            $this->$value = $frontChar;
+            $this->$firstOperand = null;
+            $this->$secondOperand = null;
         }
     }
     
@@ -25,6 +25,12 @@ class ArithmeticNode {
         if(gettype($value == "integer")) {
             return $value;
         } else {
+            if(gettype($firstOperand != "integer")) {
+                $firstOperand = $firstOperand->getValue();
+            }
+            if(gettype($secondOperand != "integer")) {
+                $secondOperand = $secondOperand->getValue();
+            }
             switch($value) {
                 case "add":
                     $value = ($this->add)($firstOperand, $secondOperand);
