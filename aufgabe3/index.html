@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    </head>
+    <body>
+        <header class="page-header">
+            <h1>Flexbox Karteikarten Demonstration</h1>
+            <ul>
+                <li id="columnBtn" onclick="columnLayout()">Spaltenlayout</li>
+                <li id="rowBtn" onclick="rowLayout()" class="hidden">Reihenlayout</li>
+                <li id="orderBtn" onclick="orderCards()">Karten Ordnen</li>
+                <li id="scrambleBtn" onclick="scrambleCards()" class="hidden">Karten Mischen</li>
+            </ul>
+        </header>
+        <main class="page-main">
+            <ul id="flexi" class="cards unordered rows">
+                <li id="card3"><h2>Card 3</h2>
+                    <p>Posuere varius ullamcorper ipsum adipiscing dignissim ipsum adipiscing a a quisque malesuada quam purus venenatis sagittis fermentum parturient curabitur montes a metus.
+                    </p></li>
+                <li id="card1" class="important"><h2>Card 1</h2>
+                    <p>Posuere varius ullamcorper ipsum adipiscing dignissim ipsum adipiscing a a quisque malesuada quam purus venenatis sagittis fermentum parturient curabitur montes a metus.
+                    </p></li>
+                <li id="card5"><h2>Card 5</h2>
+                    <p>Posuere varius ullamcorper ipsum adipiscing dignissim ipsum adipiscing a a quisque malesuada quam purus venenatis sagittis fermentum parturient curabitur montes a metus.
+                    </p></li>
+                <li id="card4" class="important"><h2>Card 4</h2>
+                    <p>Posuere varius ullamcorper ipsum adipiscing dignissim ipsum adipiscing a a quisque malesuada quam purus venenatis sagittis fermentum parturient curabitur montes a metus.
+                    </p></li>
+                <li id="card2"><h2>Card 2</h2>
+                    <p>Posuere varius ullamcorper ipsum adipiscing dignissim ipsum adipiscing a a quisque malesuada quam purus venenatis sagittis fermentum parturient curabitur montes a metus.
+                    </p></li>
+            </ul>
+        </main>
+    </body>
+</html>

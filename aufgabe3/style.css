@@ -1,0 +1,118 @@
+body{
+    margin: 0px;
+}
+
+body *{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.page-header{
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background-color: darkolivegreen;
+    margin: 0px;
+    color: white;
+    padding: 5px 50px 5px 50px;
+}
+
+ul{
+    padding-left: 0px;
+    list-style: none;
+    margin-top: 0px;
+}
+
+h1{
+    margin: 0px;
+}
+
+ul li{
+    border: 1px solid darkslategray;
+    background-color: darkslategray;
+    padding: 5px;
+    display: inline-block;
+    margin: 0px;
+    user-select: none;
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+}
+
+.page-header{
+    top: 0px;
+}
+
+.page-main {
+    width: 100%;
+    position: absolute;
+    top: 10%;
+}
+
+.cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards li {
+    border: 2px solid #490A3D;
+    border-radius:5px;
+    background-color: #BD1550;
+    color: #fff;
+}
+
+.cards h2 {
+    background-color: #490A3D;
+    margin: 0;
+    padding: 10px;
+}
+
+.cards p {
+    padding: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+.columns{
+    flex-direction: column;
+}
+
+#flexi{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#flexi li{
+    flex-grow: 1;
+    flex-basis: 200px;
+}
+
+#flexi .important{
+    flex-grow: 1.5;
+}
+
+.ordered #card1{
+    order: 1;
+}
+
+.ordered #card2{
+    order: 2;
+}
+
+.ordered #card3{
+    order: 3;
+}
+
+.ordered #card4{
+    order: 4;
+}
+
+.ordered #card5{
+    order: 5;
+}
