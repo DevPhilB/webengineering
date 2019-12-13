@@ -1,14 +1,13 @@
-/* Vor generiertes Styling, hier nichts ändern sondern vorzugsweise am Ende der Datei neue Styledefinitionen einfügen*/
-body {
+body{
     margin: 0px;
 }
 
-body * {
+body *{
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-.page-header {
+.page-header{
     position: absolute;
     width: 100%;
     height: 10%;
@@ -18,30 +17,30 @@ body * {
     padding: 5px 50px 5px 50px;
 }
 
-ul {
+ul{
     padding-left: 0px;
     list-style: none;
     margin-top: 0px;
 }
 
-h1 {
+h1{
     margin: 0px;
 }
 
-ul li {
+ul li{
     border: 1px solid darkslategray;
     background-color: darkslategray;
     padding: 5px;
     display: inline-block;
     margin: 0px;
     user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
 }
 
-.page-header {
+.page-header{
     top: 0px;
 }
 
@@ -59,7 +58,7 @@ ul li {
 
 .cards li {
     border: 2px solid #490A3D;
-    border-radius: 5px;
+    border-radius:5px;
     background-color: #BD1550;
     color: #fff;
 }
@@ -74,64 +73,46 @@ ul li {
     padding: 10px;
 }
 
-.hidden {
+.hidden{
     display: none;
 }
 
-/* Style Definition vorzugsweise hier drunter einfügen*/
+.columns{
+    flex-direction: column;
+}
 
-/* 3a_1 und _3 crossline und wrap*/
-
-#flexi {
+#flexi{
     display: flex;
-    align-self: baseline;
     flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
 
-
-/* 3a_2 doppelt so groß */
-#flexi li {
-    display: flex;
-    flex: 1 1 200px;
-
+#flexi li{
+    flex-grow: 1;
+    flex-basis: 200px;
 }
 
-#flexi .important {
-    display: flex;
-    flex: 1 2 200px;
+#flexi .important{
+    flex-grow: 1.5;
 }
 
-
-
-/* 3b) */
-.rows {
-    flex-direction: row !important;
-}
-
-.columns {
-    flex-direction: column !important;
-}
-
-/* 3c) */
-
-.ordered #card3 {
-    order: 3;
-}
-
-.ordered #card1 {
+.ordered #card1{
     order: 1;
 }
 
-.ordered #card5 {
-    order: 5;
-}
-
-.ordered #card4 {
-    order: 4;
-}
-
-.ordered #card2 {
+.ordered #card2{
     order: 2;
 }
 
-.unordered {}
+.ordered #card3{
+    order: 3;
+}
+
+.ordered #card4{
+    order: 4;
+}
+
+.ordered #card5{
+    order: 5;
+}

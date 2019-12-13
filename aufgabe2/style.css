@@ -1,104 +1,81 @@
-main {
-    background-color: white;
-    border: 1px solid black;
-    width: 80%;
-    height: 2000px;
-}
-
-header {
-    text-align: center;
-    background-color: forestgreen;
-}
-
-main {
-    /* 2a ) mittig zentrieren */
-    margin: 0 auto;
-}
-
-
-
-/*2b) anpassen der Kindelemente*/
-.minibox {
-    position: absolute;
+.minibox{
+    position: relative;
     width: 100px;
     height: 100px;
 }
 
-.minibox :nth-child(1) {
-    background-color: grey;
+.minibox div:nth-child(1){
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 70%;
     height: 30%;
-    position: absolute;
-    top: 0%;
-    left: 0%;
+    background-color: silver;
 }
 
-.minibox :nth-child(2) {
-    background-color: yellow;
-    height: 70%;
+.minibox div:nth-child(2){
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 30%;
-    position: absolute;
-    left: 70%;
-    top: 0%;
-}
-
-.minibox :nth-child(3) {
-    background-color: red;
     height: 70%;
-    width: 30%;
-    position: absolute;
-    left: 0%;
-    top: 30%;
+    background-color: gold;
 }
 
-.minibox :nth-child(4) {
-    background-color: aqua;
+.minibox div:nth-child(3){
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 70%;
     height: 30%;
+    background-color: aquamarine;
+}
+
+.minibox .box:nth-child(4){
     position: absolute;
-    bottom: 0%;
-    right: 0%;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: 70%;
+    background-color: crimson;
 }
 
-/* 2c) positionierung beim header */
+main{
+    background-color: white;
+    position: relative;
+    top: 100px;
+    border: 1px solid black;
+    width: 80%;
+    margin: auto;
+    height: 2000px;
+}
 
-header :nth-child(1) {
+header{
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    background-color: forestgreen;
+    z-index: 1;
+}
+
+header .minibox:first-child{
     position: absolute;
-    left: 0%;
-    top: 0%;
+    left: 0px;
+    top: 0px;
 }
 
-header :nth-child(3) {
+header .minibox:last-child{
     position: absolute;
-    right: 0%;
-    top: 0%;
+    right: 0px;
+    top: 0px;
 }
 
-/* 2d) sticky header */
-header {
-
-    position: sticky;
-    top: 0%;
+.boxbar{
+    position: absolute;
+    top: 500px;
 }
 
-/* 2e) ? verschoben? ist bei mir nicht verdeckt */
-
-main {
-    margin-top: 100px;
-}
-
-
-/* 2f) z koordinate */
-header {
-    z-index: 10;
-}
-
-main {
-    z-index: 5;
-}
-
-/* 2g) box bar  */
-.boxbar {
+.boxbar .minibox{
     position: sticky;
     top: 200px;
 }

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>WebEng 2018 - Routenplaner</title>
+        <title>WebEng 2019 - Routenplaner</title>
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -12,18 +12,13 @@
       <header>
           <h1>Web Engineering Routenplaner</h1>
           <nav>
-              <a class="active" href="index.html">Home</a>
-              <a href="stops.html">Stops</a>
+            <ul>
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="stops.html">Stops</a></li>
+            </ul>
           </nav>
       </header>
       <main class="index-content">
-          <aside>
-              <h2 id="favname">Favorit: Haltestelle</h2>
-              <ul id="favdepartures">
-                  <li>16:03 Linie 5 (Wissenschaftsstadt)</li>
-                  <li>16:10 Linie 3 (Wiblingen)</li>
-              </ul>
-          </aside>
 
           <section>
                 <form class="search-form">
@@ -41,6 +36,14 @@
                 </div>
             </section>
 
+            <aside>
+                <h2 id="favname">Favorit: Haltestelle</h2>
+                <ul id="favdepartures">
+                    <li>16:03 Linie 5 (Wissenschaftsstadt)</li>
+                    <li>16:10 Linie 3 (Wiblingen)</li>
+                </ul>
+            </aside>
+
             <!--datalist for auto completion-->
             <datalist id="stops">
                 <option value="Safranberg" />
@@ -48,7 +51,7 @@
             </datalist>
         </main>
         <footer>
-            Copyright WebEng 2018, Maybe rights are reserved
+            Copyright WebEng 2019, Maybe rights are reserved
         </footer>
     </body>
 </html>
