@@ -6,21 +6,22 @@ body {
     margin: 0px;
 }
 
-h1, h2{
+h1,
+h2 {
     margin: 0px;
 }
 
-button{
+button {
     border: 1px solid black;
     text-align: center;
     background-color: lightgray;
 }
 
-button:hover{
+button:hover {
     background-color: darkgray;
 }
 
-ul{
+ul {
     margin-top: 10px;
     list-style: none;
     padding-left: 0px;
@@ -32,14 +33,17 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
 /* header & footer styles
  -------------------------------------------*/
 
-header, footer{
+header,
+footer {
     background-color: #444;
     color: white;
 }
@@ -49,19 +53,20 @@ header {
     padding: 20px 20px 0px 20px;
 }
 
-.active{
+.active {
     text-decoration: underline;
 }
 
-nav{
+nav {
     margin-top: 5px;
 }
 
-nav a{
+nav a {
     background-color: green;
     text-decoration: none;
     padding: 5px;
-    display: inline-block; /* allows width, height */
+    display: inline-block;
+    /* allows width, height */
     color: white;
 }
 
@@ -69,13 +74,14 @@ nav li {
     display: inline;
 }
 
-nav a:hover{
+nav a:hover {
     color: darkgray;
 }
 
 /* footer */
-footer{
-    font-size: 0.8rem; /* font size relative to the root element */
+footer {
+    font-size: 0.8rem;
+    /* font size relative to the root element */
     padding: 10px 20px 10px 20px;
 }
 
@@ -90,25 +96,27 @@ main {
     flex-wrap: wrap;
 }
 
-main section{
-    order: 1;
+main section {
+    /* 1. changed order. */
+    order: 2;
 }
 
-main aside{
-    order: 2;
+/* 1. changed order. */
+main aside {
+    order: 1;
     margin-left: 20px;
 }
 
 /* index page */
-.index-content section{
+.index-content section {
     flex-grow: 2;
 }
 
-.index-content aside{
+.index-content aside {
     flex-grow: 1;
 }
 
-.search-form{
+.search-form {
     display: flex;
     margin-bottom: 5px;
     justify-content: space-between;
@@ -120,12 +128,12 @@ main aside{
     line-height: 20px;
 }
 
-.stop-input{
+.stop-input {
     flex-grow: 2;
     margin-right: 5px;
 }
 
-.stop-btn{
+.stop-btn {
     flex-grow: 1;
 }
 
@@ -138,22 +146,24 @@ main aside{
 
 
 /* stop page */
-.stop-content aside{
-    height: 400px;
+.stop-content aside {
+    /* 1. relative größe */
+    height: 50%;
     flex-grow: 4;
 }
 
-#map{
-    height: 400px;
+#map {
+    /* 1. relative größe */
+    height: 100%;
 }
 
-.stop-content section{
+.stop-content section {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-.stopentry{
+.stopentry {
     border: 1px solid black;
     padding: 10px;
     margin-top: 1px;
@@ -161,10 +171,10 @@ main aside{
     display: flex;
 }
 
-.stop-caption{
+.stop-caption {
     flex-grow: 9;
 }
 
-.stopentry:hover{
+.stopentry:hover {
     background-color: green;
 }
