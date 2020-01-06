@@ -38,4 +38,3 @@ class Node {
         return $this->edges;
     }
 }
-?>

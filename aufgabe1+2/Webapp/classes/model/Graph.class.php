@@ -49,6 +49,7 @@ class Graph {
     }
 
     public function findNode($id) {
+        // return $this->getExistingNode($id);
         if(array_key_exists($id, $this->nodes)) {
             return $this->nodes[$id];
         }
