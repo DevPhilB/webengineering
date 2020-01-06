@@ -7,8 +7,8 @@ class Edge {
     private $cost;
     private $line; // Line
 
-    public function __constructor($id, $cost, $line) {
-        $this->endNode = new Node($id);
+    public function __constructor($endNode, $cost, $line) {
+        $this->endNode = $endNode;
         $this->cost = $cost;
         $this->line = $line;
     }
@@ -26,6 +26,11 @@ class Edge {
     // Getter
     public function getLine() {
         return $this->line;
+    }
+
+
+    public function setEndNode($node) {
+        $this->endNode = $node;
     }
 }
 ?>

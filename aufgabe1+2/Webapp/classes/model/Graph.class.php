@@ -1,29 +1,51 @@
 <?php
 include_once 'Node.class.php';
 include_once 'Line.class.php';
-// 1. d)
+include_once 'Edge.class.php';
+
 class Graph {
-    private $nodes; // List<Node>
+    private $nodes = array(); // List<Node>
 
     public function __constructor() {
-        $this->nodes = array();
+
     }
 
     public function addNode($id) {
-        if(!array_key_exists($id, $this->$nodes)) {
-            array_push($this->$nodes, new Node($id));
+        if(!array_key_exists($id, $this->nodes)) {
+            $node = new Node($id);
+            $node->setId($id);
+            echo "Created node: $id.\n";
+            $this->nodes[$id] = $node;
+        }else{
+            echo "Node: $id alreday exist.\n";
         }
     }
 
-    public function addEdge($startId, $endId, $cost, $line) {
-        if(!array_key_exists($startId) && !array_key_exists($endId)) {
-            $startNode = new Node($startId);
-            $endNode = new Node($endId);
-            $edge = new Edge($endId, $cost, $line);
+    public function addEdge($startId, $endId, $cost, $line){
+        $startNode = $this->getExistingNode($startId);
+        $endNode = $this->getExistingNode($endId);
+
+         if($startNode->getEdge($endNode) == null){
+            echo "created new edge from startId: $startId to endId: $endId.\n";
+            $edge = new Edge($endNode, $cost, $line);
+            $edge->setEndNode($endNode);
             $startNode->addEdge($edge);
-            $endNode->addEdge($edge);
-            array_push($this->$nodes, $startNode, $endNode);
+         }else{
+            echo "Edge from startId: $startId to endId: $endId already exist.\n";
+         }
+    }
+
+    public function getExistingNode($id){
+        foreach($this->nodes as $node){
+            if($node->getId() == $id)
+            {
+                return $node;
+            }
         }
+        $node = new Node($id);
+        array_push($this->nodes, $node);
+        echo "Created new node.\n";
+        return $node;
     }
 
     public function findNode($id) {
@@ -34,23 +56,15 @@ class Graph {
 
     public function print() {
         foreach($this->nodes as $firstNode) {
-            printf("%s", "Node $node->getId() ->");
-            $edgeNodeIds = " ";
-            foreach($this->nodes as $secondNode) {
-                if($firstNode != $secondNode) {
-                    if($firstNode->getEdge($secondNode) != null) {
-                        $edgeNodeIds .= $secondNode->getId() . " ";
-                    }
+            echo "id: ". $firstNode->getId() . "-> ";
+            foreach($firstNode->getEdges() as $edge) {
+                $conNode = $edge->getEndNode();
+                if($conNode != null){
+                    echo $conNode->getId() . " ";
                 }
             }
-            $edgeNodeIds = substr($edgeNodeIds, 0, -1); // Remove last space
-            printf("%s", "$edgeNodeIds");
+            echo "\n";
         }
-    }
-
-    // Getter
-    public function getNodes() {
-        return $this->$nodes;
     }
 }
 ?>
