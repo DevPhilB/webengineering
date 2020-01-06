@@ -29,6 +29,8 @@ class Graph {
             echo "created new edge from startId: $startId to endId: $endId.\n";
             $edge = new Edge($endNode, $cost, $line);
             $edge->setEndNode($endNode);
+            $edge->setCost($cost);
+            $edge->setLine($line);
             $startNode->addEdge($edge);
          }else{
             echo "Edge from startId: $startId to endId: $endId already exist.\n";

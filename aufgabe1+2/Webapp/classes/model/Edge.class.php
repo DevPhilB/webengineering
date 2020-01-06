@@ -28,9 +28,17 @@ class Edge {
         return $this->line;
     }
 
-
+    // Setter
     public function setEndNode($node) {
         $this->endNode = $node;
+    }
+
+    public function setCost($cos) {
+        $this->cost = $cos;
+    }
+
+    public function setLine($lin) {
+        $this->line = $lin;
     }
 }
 ?>

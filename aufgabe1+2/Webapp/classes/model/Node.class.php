@@ -14,6 +14,7 @@ class Node {
         array_push($this->edges, $edge);
     }
 
+    // Returns the edge to the parameter end node.
     public function getEdge($endNode) {
         foreach($this->edges as $edge) {
             $edgeEndNode = $edge->getEndNode();

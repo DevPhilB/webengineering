@@ -24,7 +24,31 @@ class DFSearch
         $endNode = $graph->findNode($endId);
         $this->dfsearchRec($graph, $startNode, $endNode, false);
         $this->solutionFound = false;
-        $solution = $this->pathNodes;
+
+
+        if (!in_array($endNode,$this->pathNodes)) {
+            echo "No solution from $startId to $endId. \n";
+            return;
+        }else{
+            $solution = array();
+            for ($i=0; $i < count($this->pathNodes); $i++) { 
+                $node = $this->pathNodes[$i];
+                $nextNode = $this->pathNodes[$i + 1];
+                if ($nextNode == null) {
+                break;
+            }
+                $id = $node->getId();
+                $edge = $node->getEdge($nextNode);
+                $cost = $edge->getCost();
+                $line = $edge->getLine();
+                $pathNode = new PathNode($id, $cost, $line);
+                $pathNode->setId($id);
+                $pathNode->setCost($cost);
+                $pathNode->setLine($line);
+                $solution[] = $pathNode;
+            }
+
+        }
         $this->pathNodes = array();
         return $solution;
     }
@@ -37,16 +61,15 @@ class DFSearch
         if ($visited) {
             return;
         }
+
+        echo "From " . $startNode->getId() . " to " . $endNode->getId() . ". \n";
+        $this->pathNodes[] = $startNode;
+
         if ($startNode->getId() == $endNode->getId()) {
-            // new PathNode($startId, $startId);
             echo "Path found.\n";
             $this->solutionFound = true;
             return;
-        } else {
-            echo "From " . $startNode->getId() . " to " . $endNode->getId() . ". \n";
-            $this->pathNodes[] = $startNode;
         }
-
 
 
         foreach ($startNode->getEdges() as $edge) {

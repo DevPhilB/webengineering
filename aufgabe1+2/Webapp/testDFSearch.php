@@ -51,8 +51,16 @@ $graph->print();
 echo "\n \n";
 // Find path from 1 to 8.
 echo "Search path... \n";
-$searcher = new DFSearch($graph, 1 , 5);
+$searcher = new DFSearch($graph, 1 , 8);
 
 echo "\n \n";
-$searcher->dfsearch($graph, 1 , 8);
+$solution = $searcher->dfsearch($graph, 1 , 5);
+
+foreach($solution as $path){
+    $path->print();
+}
+
+echo "\n \n";
+// No path from 6 to 1.
+$searcher->dfsearch($graph, 2 , 1);
 ?>
