@@ -7,10 +7,10 @@ class Edge {
     private $cost;
     private $line; // Line
 
-    public function __constructor($endNode, $cost, $line) {
+    public function __construct($endNode, $cost, $line) {
         $this->endNode = $endNode;
         $this->cost = $cost;
-        $this->line = $line;
+        $this->line = new Line($line ,"testDisplay","testHeading");
     }
 
     // Getter

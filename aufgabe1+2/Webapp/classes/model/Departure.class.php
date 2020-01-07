@@ -5,7 +5,7 @@ class Departure {
     private $display;
     private $time; // DateTime
 
-    public function __constructor($line, $display, $time) {
+    public function __construct($line, $display, $time) {
         $this->line = $line;
         $this->display = $display;
         $this->time = $time;

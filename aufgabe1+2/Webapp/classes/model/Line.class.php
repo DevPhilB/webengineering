@@ -5,7 +5,7 @@ class Line {
     private $display;
     private $heading;
 
-    public function __constructor($id, $display, $heading) {
+    public function __construct($id, $display, $heading) {
         $this->id = $id;
         $this->display = $display;
         $this->heading = $heading;

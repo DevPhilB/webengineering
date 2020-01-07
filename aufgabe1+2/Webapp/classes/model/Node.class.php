@@ -5,8 +5,7 @@ class Node {
     private $nodeID;
     private $edges = array(); // List<Edge>
 
-    public function __constructor($id) {
-        printf("NODE CONSTRUCTOR \n");
+    public function __construct($id) {
         $this->nodeID = $id;
     }
 

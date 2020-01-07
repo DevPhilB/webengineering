@@ -13,7 +13,7 @@ class DFSearch
     public $solutionFound = false;
     public $pathNodes = array();
 
-    public function __constructor()
+    public function __construct()
     {
         $this->solutionFound = false;
     }
@@ -42,9 +42,6 @@ class DFSearch
                 $cost = $edge->getCost();
                 $line = $edge->getLine();
                 $pathNode = new PathNode($id, $cost, $line);
-                $pathNode->setId($id);
-                $pathNode->setCost($cost);
-                $pathNode->setLine($line);
                 $solution[] = $pathNode;
             }
 

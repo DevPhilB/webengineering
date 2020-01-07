@@ -6,14 +6,13 @@ include_once 'Edge.class.php';
 class Graph {
     private $nodes = array(); // List<Node>
 
-    public function __constructor() {
+    public function __construct() {
 
     }
 
     public function addNode($id) {
         if(!array_key_exists($id, $this->nodes)) {
             $node = new Node($id);
-            $node->setId($id);
             echo "Created node: $id.\n";
             $this->nodes[$id] = $node;
         }else{
@@ -28,9 +27,6 @@ class Graph {
          if($startNode->getEdge($endNode) == null){
             echo "created new edge from startId: $startId to endId: $endId.\n";
             $edge = new Edge($endNode, $cost, $line);
-            $edge->setEndNode($endNode);
-            $edge->setCost($cost);
-            $edge->setLine($line);
             $startNode->addEdge($edge);
          }else{
             echo "Edge from startId: $startId to endId: $endId already exist.\n";

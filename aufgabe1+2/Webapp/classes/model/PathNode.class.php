@@ -6,7 +6,7 @@ class PathNode {
     private $cost;
     private $line; // <Line>
 
-    public function __constructor($id, $cost, $line) {
+    public function __construct($id, $cost, $line) {
         $this->id = $id;
         $this->cost = $cost;
         $this->line = $line;
@@ -41,7 +41,7 @@ class PathNode {
     }
 
     public function print(){
-        echo "From " . $this->id . " cost " . $this->cost . " line ". $this->line  .".\n";
+        echo "From " . $this->id . " cost " . $this->cost . " line ". $this->line->getId()  .".\n";
     }
 }
 ?>
