@@ -24,24 +24,26 @@ $graph->addNode(8);
 
 echo "\n \n";
 echo "Create edges.\n";
-// Default value for cost and line = 9
+// Default value for cost and line has to be 1.
+$cost = 1;
+$line = 1;
 // Added twice the same edge should not be possible.
-$graph->addEdge(1, 2, 9, 9);
-$graph->addEdge(1, 2, 9, 9);
+$graph->addEdge(1, 2, $cost, $line);
+$graph->addEdge(1, 2, $cost, $line);
 echo "\n";
-$graph->addEdge(1, 3, 9, 9);
-$graph->addEdge(2, 5, 9, 9);
-$graph->addEdge(3, 4, 9, 9);
-$graph->addEdge(3, 6, 9, 9);
-$graph->addEdge(4, 2, 9, 9);
-$graph->addEdge(4, 7, 9, 9);
-$graph->addEdge(4, 8, 9, 9);
-$graph->addEdge(5, 6, 9, 9);
-$graph->addEdge(6, 2, 9, 9);
-$graph->addEdge(6, 7, 9, 9);
-$graph->addEdge(7, 5, 9, 9);
-$graph->addEdge(7, 8, 9, 9);
-$graph->addEdge(8, 3, 9, 9);
+$graph->addEdge(1, 3, $cost, $line);
+$graph->addEdge(2, 5, $cost, $line);
+$graph->addEdge(3, 4, $cost, $line);
+$graph->addEdge(3, 6, $cost, $line);
+$graph->addEdge(4, 2, $cost, $line);
+$graph->addEdge(4, 7, $cost, $line);
+$graph->addEdge(4, 8, $cost, $line);
+$graph->addEdge(5, 6, $cost, $line);
+$graph->addEdge(6, 2, $cost, $line);
+$graph->addEdge(6, 7, $cost, $line);
+$graph->addEdge(7, 5, $cost, $line);
+$graph->addEdge(7, 8, $cost, $line);
+$graph->addEdge(8, 3, $cost, $line);
 
 echo "\n \n";
 printf("Print tree... \n");

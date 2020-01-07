@@ -79,7 +79,7 @@ class DFSearch
         if (is_array($this->pathNodes) || is_object($this->pathNodes)) {
             foreach ($this->pathNodes as $node) {
                 if ($node->getId() == $newNode->getId()) {
-                    echo "Node " . $newNode->getId() . " already visit \n";
+                    echo "Node " . $newNode->getId() . " already visited. \n";
                     return true;
                 }
             }

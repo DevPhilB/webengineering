@@ -25,7 +25,7 @@ class Graph {
         $endNode = $this->getExistingNode($endId);
 
          if($startNode->getEdge($endNode) == null){
-            echo "created new edge from startId: $startId to endId: $endId.\n";
+            echo "Created new edge from startId: $startId to endId: $endId.\n";
             $edge = new Edge($endNode, $cost, $line);
             $startNode->addEdge($edge);
          }else{
@@ -55,7 +55,7 @@ class Graph {
 
     public function print() {
         foreach($this->nodes as $firstNode) {
-            echo "id: ". $firstNode->getId() . "-> ";
+            echo "Id: ". $firstNode->getId() . "-> ";
             foreach($firstNode->getEdges() as $edge) {
                 $conNode = $edge->getEndNode();
                 if($conNode != null){
