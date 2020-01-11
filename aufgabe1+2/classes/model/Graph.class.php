@@ -40,7 +40,7 @@
             foreach($node->getEdges() as $edge){
               echo $edge->getEndNode()->getId() . " ";
             }
-            echo "<br>";
+            echo "<br>\n";
           }
         }
     }
