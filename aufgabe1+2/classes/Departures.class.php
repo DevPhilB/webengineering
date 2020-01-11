@@ -1,6 +1,5 @@
 <?php
-require_once("Node.class.php");
-require_once("Edge.class.php");
+
 
 // 1. d)
 class Departures
