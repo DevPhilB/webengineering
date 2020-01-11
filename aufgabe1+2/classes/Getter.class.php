@@ -1,6 +1,8 @@
 <?php
 require_once("model/Graph.class.php");
 require_once("model/Line.class.php");
+require_once("model/Departure.class.php");
+require_once("Departures.class.php");
 
 // 1. a)
 class Getter
@@ -52,10 +54,29 @@ class Getter
         }
         return $graph;
     }
+
+    // 1. e) 
+    function getDepartures($stopId, $time){
+        // Time should have format XX:XX
+        // sample: http://morgal.informatik.uni-ulm.de:8000/line/stop/2/departure/?start=22:33
+        $departureJson = $this->requestData($this->basicLink . "stop/". $stopId . "/departure/?start=". $time);
+        $departureList = json_decode($departureJson, true);
+
+        $departuresArray = array();
+        foreach($departureList as $dep){
+            $dateTime = $dep["time"]; // TODO: Convert to date time format.
+            $departure = new Departure($dep["line"], $dep["display"], $dateTime);
+            $departuresArray[] = $departure;
+        }
+
+       return new Departures($departuresArray);
+    }
 }
 $gtter = new Getter();
-$ret = $gtter->getGraph();
+// $ret = $gtter->getGraph();
 
-echo "Graph: </br>\n";
-$ret->print();
+// echo "Graph: </br>\n";
+// $ret->print();
+
+$gtter->getDepartures("2","22:33")->print();
 ?>
