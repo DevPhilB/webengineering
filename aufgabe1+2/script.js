@@ -1,5 +1,5 @@
 registerEvents();
-// 1.a)and 2a)
+// 1. a) and 2. a)
 var currentCalculation = celsiusToFahrenheit;
 
 function convert() {
@@ -9,7 +9,7 @@ function convert() {
 }
 
 function registerEvents() {
-    //TODO: register click events for buttons 2b) and 2c)
+    // register click events for buttons 2. b) and 2. c)
     document.getElementsByClassName("calcButton")[0].addEventListener("click", () => {
         currentCalculation = celsiusToFahrenheit;
     });
@@ -26,16 +26,16 @@ function registerEvents() {
 
 function setOutput(value) {
     let out = document.getElementById("output");
-    //TODO: unset ghost values class
+    // 2. b) unset ghost values class
+    out.classList.remove("ghost-value");
     out.innerHTML = value;
 }
 
-//2e)
+// 1. e)
 function superSafeSignature(inputText) {
 
     // split teilt array in teil strings -> mit map und charCodeAt(0) wird jede char in zahl umgewandelt(UTF 16) index = 0 => das erste char wird ausgewählt
     let chars = inputText.split("").map(x => x.charCodeAt(0));
-    alert(chars);
     let summe = 0;
     let prev = 1;
     // das array char ist falsch benannt weil es eigentlich nur zahlen enthält, sollte besser ints oder numbers heißen.
@@ -43,22 +43,21 @@ function superSafeSignature(inputText) {
     chars.forEach(element => {
         summe += element / prev; // summe wird durch -> element zahl / prev(vorherige element zahl) erhöht
         summe = summe % 1000000; // summe modulo 1000000 -> dadurch zahl nicht mehr als 7 stellen
-        alert(summe);
         prev = element; // der teiler prev wird gesetzt
     });
-    //Zahl wird multiplizirt und abgerundet, verliert dadurch nachkomma stellen.
+    // zahl wird multipliziert und abgerundet, verliert dadurch nachkomma stellen.
     return Math.round(summe * 1000000);
 }
 
-//insert conversion functions here
-// 1.a)
+// insert conversion functions here
+// 1. a)
 function celsiusToFahrenheit(celsius) {
     var n = parseInt(celsius);
     var fahrenheit = n * 1.8 + 32;
     return fahrenheit;
 }
 
-// 1.b)
+// 1. b)
 function isPrime(input) {
     var n = parseInt(input)
     let prime = true;
@@ -71,7 +70,7 @@ function isPrime(input) {
     return prime && (n > 1);
 }
 
-// 1.c)
+// 1. c)
 function reverseString(reverse) {
     let result = "";
     for (var pos = reverse.length - 1; pos >= 0; pos--) {
@@ -80,7 +79,7 @@ function reverseString(reverse) {
     return result;
 }
 
-// 1.d)
+// 1. d)
 function token(input) {
     var partToken = {
         msg: input,
