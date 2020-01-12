@@ -24,7 +24,14 @@ class Getter
     // 1. b)
     function getStopList()
     {
-        return $this->requestData($this->basicLink . "stop/");
+         $list =$this->requestData($this->basicLink . "stop/");
+         $stops = json_decode($list, true);
+         $stopList = array();
+         foreach ($stops["stops"] as $key => $value) {
+            $stopList[$key] = $value;
+        }
+
+         return $stopList;
     }
 
     // 1. c)
@@ -32,8 +39,8 @@ class Getter
     {
         $graph = new Graph();
         // Creates nodes.
-        $stopList = json_decode($this->getStopList(), true);
-        foreach ($stopList["stops"] as $key => $value) {
+        $stopList =$this->getStopList();
+        foreach ($stopList as $key => $value) {
             $graph->addNode($key);
         }
 
@@ -57,26 +64,19 @@ class Getter
 
     // 1. e) 
     function getDepartures($stopId, $time){
-        // Time should have format XX:XX
-        // sample: http://morgal.informatik.uni-ulm.de:8000/line/stop/2/departure/?start=22:33
-        $departureJson = $this->requestData($this->basicLink . "stop/". $stopId . "/departure/?start=". $time);
+        $departureJson = $this->requestData($this->basicLink . "stop/". $stopId . "/departure/?start=". $time->format("H:i"));
         $departureList = json_decode($departureJson, true);
 
         $departuresArray = array();
         foreach($departureList as $dep){
-            $dateTime = $dep["time"]; // TODO: Convert to date time format.
+            // Convert to date time format.
+            $dateTimeString = $dep["time"]; 
+            $dateTime = new DateTime($dateTimeString);
+            $printDateTime = $dateTime->format("H:i");
             $departure = new Departure($dep["line"], $dep["display"], $dateTime);
             $departuresArray[] = $departure;
         }
-
        return new Departures($departuresArray);
     }
 }
-$gtter = new Getter();
-// $ret = $gtter->getGraph();
-
-// echo "Graph: </br>\n";
-// $ret->print();
-
-$gtter->getDepartures("2","22:33")->print();
 ?>

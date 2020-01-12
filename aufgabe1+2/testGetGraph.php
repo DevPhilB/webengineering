@@ -12,7 +12,7 @@
             require_once("classes/Getter.class.php");
             $getter = new Getter();
             $graph = $getter->getGraph();
-            echo "Graph: <br>";
+            echo "Graph: <br>\n";
             $graph->print();
         ?>
     </body>

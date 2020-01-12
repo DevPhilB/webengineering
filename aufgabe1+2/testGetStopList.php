@@ -14,13 +14,13 @@
             $stops = $getter->getStopList();
             echo "Stops (sortiert nach stop): <br>";
             foreach ($stops as $id => $stop) {
-                echo "Stop ".$id.": ".$stop."<br>";
+                echo "Stop ".$id.": ".$stop."<br>\n";
             }
-            echo "<br><br>";
+            echo "<br><br>\n\n";
             ksort($stops);
-            echo "Stops (sortiert nach id): <br>";
+            echo "Stops (sortiert nach id): <br>\n";
             foreach ($stops as $id => $stop) {
-                echo "Stop ".$id.": ".$stop."<br>";
+                echo "Stop ".$id.": ".$stop."<br>\n";
             }
         ?>
     </body>

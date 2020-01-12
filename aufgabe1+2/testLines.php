@@ -20,11 +20,11 @@
             $stops = $data["stops"];
             usort($data["lines"], "cmp");
             foreach($data["lines"] as $line){
-                echo "<strong>Line " . $line["display"] . " (ID " . $line["id"] . ") to " . $stops[$line["heading"]] . ": </strong><br>";
+                echo "<strong>Line " . $line["display"] . " (ID " . $line["id"] . ") to " . $stops[$line["heading"]] . ": </strong><br>\n";
                 foreach($line["trip"] as $stop){
-                    echo "&nbsp;&nbsp;&nbsp;&nbsp;" . $stops[$stop["stop"]] . " (ID " . $stop["stop"] . ") <br>";
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;" . $stops[$stop["stop"]] . " (ID " . $stop["stop"] . ") <br>\n";
                 }
-                echo "<br><br>";
+                echo "<br><br>\n\n";
             }
         ?>
     </body>

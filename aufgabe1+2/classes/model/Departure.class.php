@@ -31,8 +31,14 @@ class Departure
         return $this->time;
     }
 
+    function getTimeAsString()
+    {
+        return $this->time->format("H:i");
+    }
+
+
     function print()
     {
-        echo "\n Print Dep. Line:" . $this->line . " Display:" . $this->display . " Time:" . $this->time;
+        echo "\n Print Dep. Line:" . $this->line . " Display:" . $this->display . " Time:" . $this->time->format("H:i");
     }
 }
