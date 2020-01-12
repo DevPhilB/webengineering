@@ -1,3 +1,9 @@
+<?php
+// 2. a) loading stp list.
+require_once("classes/Getter.class.php");
+$gtter = new Getter();
+$stops = $gtter->getStopList();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -29,35 +35,16 @@
         <section class="filter">
             <div id="filterInputWrap"><input type="text" id="filterBox" placeholder="Filter" /></div>
             <div class="stoplist">
-                <?php 
-                require_once("classes/Getter.class.php");
-                $gtter = new Getter();
-                $stopList = json_decode($gtter->getStopList(), true);
-                foreach ($stopList["stops"] as $key => $value) {
-                   echo "<div class=\"stopentry\">";
-                   echo "<div class=\"stop-caption\">";
-                   echo $value;
+                <?php
+                // 2. c)
+                foreach ($stops as $id => $stop) {
+                    echo "<div class=\"stopentry\">";
+                    echo "<div class=\"stop-caption\">";
+                    echo $stop;
+                    echo "</div> <input type=\"checkbox\" class=\"favinput\" /> </div>";
+                } ?>
 
-                  echo "</div> <input type=\"checkbox\" class=\"favinput\" /> </div>";
-               
-                }
-
-    
-
-
-                     ?>
-                <div class="stopentry">
-                    <div class="stop-caption">Schaffhausen</div>
-                    <input type="checkbox" class="favinput" />
-                </div>
-                <div class="stopentry">
-                    <div class="stop-caption">Heiringen</div>
-                    <input type="checkbox" class="favinput" />
-                </div>
-                <div class="stopentry">
-                    <div class="stop-caption">Ulm</div>
-                    <input type="checkbox" class="favinput" />
-                </div>
+            </div>
         </section>
         </div>
     </main>

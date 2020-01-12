@@ -31,7 +31,7 @@ class Getter
             $stopList[$key] = $value;
         }
 
-         return $stopList;
+        return $stopList;
     }
 
     // 1. c)

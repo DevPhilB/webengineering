@@ -1,3 +1,10 @@
+<?php
+// 2. a) loading stp list.
+require_once("classes/Getter.class.php");
+$gtter = new Getter();
+$stops = $gtter->getStopList();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -48,8 +55,11 @@
 
         <!--datalist for auto completion-->
         <datalist id="stops">
-            <option value="Safranberg" />
-            <option value="Ehinger Tor" />
+            <?php
+            // 2. b)
+            foreach ($stops as $id => $stop) {
+                echo "  <option value=\"".$stop."\" />";
+            } ?>
         </datalist>
     </main>
     <footer>

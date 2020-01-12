@@ -1,0 +1,274 @@
+[Running] php "c:\Users\Leumas\Desktop\WebEngineering\ProjektWeb\webengineering\aufgabe1+2\index.php"
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>WebEng 2019 - Routenplaner</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Web Engineering Routenplaner</h1>
+        <nav>
+            <ul>
+                <li><a class="active" href="index.php">Home</a></li>
+                <li><a href="stops.php">Stops</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="index-content">
+
+        <section>
+            <form class="search-form">
+                <input list="stops" class="stop-input" type="text" id="start" placeholder="Starthaltestelle eingeben" />
+                <input list="stops" class="stop-input" type="text" id="end" placeholder="Endhaltestelle eingeben" />
+                <button class="stop-btn">➤</button>
+            </form>
+            <div id="result">
+                Linie 15 (Ulm Willy-Brandt-Platz):<br>
+                Ulm Universit&auml;t West (13:36) -> Ulm Willy-Brandt-Platz (14:04)<br>
+                Linie 4 (Grimmelfingen Eisenbahnstrasse): <br>
+                Ulm Willy-Brandt-Platz (14:04) -> Ulm Rathaus (14:09)<br>
+                Linie 5 (Ludwigsfeld Hasenweg): <br>
+                Ulm Rathaus (14:09) -> Neu-Ulm Rathaus (14:11)
+            </div>
+        </section>
+
+        <aside>
+            <h2 id="favname">Favorit: Haltestelle</h2>
+            <ul id="favdepartures">
+                <li>16:03 Linie 5 (Wissenschaftsstadt)</li>
+                <li>16:10 Linie 3 (Wiblingen)</li>
+            </ul>
+        </aside>
+
+        <!--datalist for auto completion-->
+        <datalist id="stops">
+            <option value="Neu-Ulm Rathaus" />
+            <option value="Wiblingen Reutlinger Straße" />
+            <option value="Ulm Sonnenstraße" />
+            <option value="Ulm Blücherstraße" />
+            <option value="Ulm Ostplatz" />
+            <option value="Einsingen Hohe Steige" />
+            <option value="Jungingen Fichtenstraße" />
+            <option value="Ulm Söflingen" />
+            <option value="Ludwigsfeld Hafnerweg" />
+            <option value="Wiblingen Pranger" />
+            <option value="Ulm Örlinger Straße" />
+            <option value="Ulm Eugen-Bolz-Straße" />
+            <option value="Gögglingen Zollbrücke" />
+            <option value="Ulm Stadtwerke" />
+            <option value="Donaustetten Illerkirchberg Straße" />
+            <option value="Dellmensingen Hirsch" />
+            <option value="Ulm Steinerne Brücke" />
+            <option value="Ulm Leonberger Weg" />
+            <option value="Jungingen Donau-Iller-Werkstätten" />
+            <option value="Ulm St.-Jakob-Straße" />
+            <option value="Donautal Ernst-Abbe-Straße" />
+            <option value="Donautal Siemensstraße" />
+            <option value="Ulm Barbaralinde" />
+            <option value="Neu-Ulm Memminger Straße" />
+            <option value="Donautal Hans-Reyhing-Weg" />
+            <option value="Ulm Multscherschule" />
+            <option value="Ulm Lise-Meitner-Straße" />
+            <option value="Ulm Sonnenfeld" />
+            <option value="Ulm Kirche Harthausen" />
+            <option value="Ulm Ludwig-Beck-Straße" />
+            <option value="Ulm Riedwiesenweg" />
+            <option value="Ulm Virchowstraße" />
+            <option value="Eggingen Rathaus" />
+            <option value="Jungingen Albstraße" />
+            <option value="Ulm Haßlerstraße" />
+            <option value="Ulm Ehrensteiner Feld" />
+            <option value="Einsingen Hirsch" />
+            <option value="Donautal Daimlerstraße" />
+            <option value="Ulm Hausstraße" />
+            <option value="Ulm Steinhövelstraße" />
+            <option value="Ulm Königstraße" />
+            <option value="Jungingen Gehrnstraße" />
+            <option value="Jungingen Rathaus" />
+            <option value="Ermingen Waldstraße" />
+            <option value="Ulm Donaustadion" />
+            <option value="Ulm Manfred-Börner-Straße" />
+            <option value="Ulm Eselsberg Hasenkopf" />
+            <option value="Ludwigsfeld Danziger Straße" />
+            <option value="Ulm Universität West" />
+            <option value="Ulm Schongauer Weg" />
+            <option value="Grimmelfingen Häberlinweg" />
+            <option value="Mähringen Rathaus" />
+            <option value="Ulm Örlinger Straße" />
+            <option value="Ludwigsfeld Katholische Kirche" />
+            <option value="Ulm Söflingen" />
+            <option value="Grimmelfingen Rathausstraße" />
+            <option value="Ulm Manfred-Börner-Straße" />
+            <option value="Jungingen Edith-Stein-Ring" />
+            <option value="Einsingen Bahnübergang" />
+            <option value="Neu-Ulm Neue Hochschule" />
+            <option value="Ulm Harthauser Straße" />
+            <option value="Donautal Liststraße" />
+            <option value="Ulm Lupferbrücke" />
+            <option value="Donautal Graf-Arco-Straße" />
+            <option value="Dellmensingen Ulmer Straße" />
+            <option value="Wiblingen Fischerhauser Weg" />
+            <option value="Einsingen Kirche" />
+            <option value="Ulm Science Park III" />
+            <option value="Wiblingen Oberer Wirt" />
+            <option value="Ulm Sedanstraße" />
+            <option value="Ulm Theater" />
+            <option value="Donautal Hans-Lorenser-Straße" />
+            <option value="Ulm Beringerbrücke" />
+            <option value="Dellmensingen Ulmer Straße 7" />
+            <option value="Ulm Lindenhöhe" />
+            <option value="Ulm Ottiliengasse" />
+            <option value="Ulm Söflinger Weinberge" />
+            <option value="Ulm Grimmelfinger Weg" />
+            <option value="Ulm Fünf-Bäume-Weg Mitte" />
+            <option value="Ulm Staufenring" />
+            <option value="Donautal Benzstraße" />
+            <option value="Ulm Ehinger Tor" />
+            <option value="Donautal Nicolaus-Otto-Straße" />
+            <option value="Neu-Ulm Jakobsruhe" />
+            <option value="Ludwigsfeld Reichenberger Straße" />
+            <option value="Ulm Science Park II" />
+            <option value="Ulm Ostpreußenweg" />
+            <option value="Wiblingen Kapelle" />
+            <option value="Ulm Oberer Kuhberg" />
+            <option value="Ulm Jägerstraße" />
+            <option value="Lehr Loherstraße" />
+            <option value="Donautal Steinbeisstraße" />
+            <option value="Donaustetten Am Kraftwerk" />
+            <option value="Ulm Universität Süd" />
+            <option value="Jungingen Hörvelsinger Weg" />
+            <option value="Ulm Gleißelstetten" />
+            <option value="Ulm Thüringenweg" />
+            <option value="Wiblingen Kemptener Straße" />
+            <option value="Ulm Hochschule" />
+            <option value="Ulm Römerplatz" />
+            <option value="Ulm Willy-Brandt-Platz" />
+            <option value="Neu-Ulm Donaubad" />
+            <option value="Ulm Ensingerstraße" />
+            <option value="Neu-Ulm Edisoncenter" />
+            <option value="Ulm Veltlinerweg" />
+            <option value="Wiblingen Tannenplatz Zentrum" />
+            <option value="Ulm Maienweg Nord" />
+            <option value="Lehr Rührweg" />
+            <option value="Ulm Kelternweg" />
+            <option value="Donautal Heuweg" />
+            <option value="Ulm Eichberg" />
+            <option value="Donautal Lichternsee" />
+            <option value="Ulm Eichberg Nord" />
+            <option value="Eggingen Ringinger Straße" />
+            <option value="Ulm Martin-Luther-Kirche" />
+            <option value="Ulm Auf der Gölde" />
+            <option value="Ulm Kuhberg Schulzentrum" />
+            <option value="Wiblingen Alte Siedlung" />
+            <option value="Ermingen Panoramastraße" />
+            <option value="Ulm Donauhalle" />
+            <option value="Donautal Donautal" />
+            <option value="Donautal Boschstraße" />
+            <option value="Gögglingen Hoher Berg" />
+            <option value="Ulm Wohnpark Friedrichsau" />
+            <option value="Ulm Alfred-Delp-Weg" />
+            <option value="Ulm Beim B'scheid" />
+            <option value="Grimmelfingen Häberlinweg" />
+            <option value="Ulm Burgunderweg" />
+            <option value="Mähringen Wendeschleife" />
+            <option value="Ulm Sulzbachweg" />
+            <option value="Ulm Albecker Steige" />
+            <option value="Wiblingen St.-Gallener-Straße" />
+            <option value="Ulm St.-Elisabeth-Kirche" />
+            <option value="Ulm Universität West" />
+            <option value="Ulm Fünf-Bäume-Weg" />
+            <option value="Ludwigsfeld Hasenweg" />
+            <option value="Ulm Hafengasse" />
+            <option value="Ulm Eichenplatz" />
+            <option value="Ulm Saarlandstraße" />
+            <option value="Ulm Steinhövelstraße" />
+            <option value="Neu-Ulm Wiley Süd" />
+            <option value="Donautal Maybachstraße" />
+            <option value="Ulm Bahnhof Söflingen" />
+            <option value="Grimmelfingen Halteplatz Donautal" />
+            <option value="Jungingen Auf dem Hart" />
+            <option value="Ulm Rathaus" />
+            <option value="Ludwigsfeld Allgäuer Straße" />
+            <option value="Neu-Ulm Illerbrücke" />
+            <option value="Ermingen Allewind" />
+            <option value="Ulm Haslacher Weg" />
+            <option value="Ulm Steinerne Brücke" />
+            <option value="Jungingen Margarete-Steiff-Straße" />
+            <option value="Wiblingen Ostermahdweg" />
+            <option value="Ulm Clarissenstraße" />
+            <option value="Wiblingen Saulgauer Straße" />
+            <option value="Ulm Egertweg" />
+            <option value="Ulm Oberer Roter Berg" />
+            <option value="Ulm Maienweg" />
+            <option value="Neu-Ulm Petrusplatz" />
+            <option value="Wiblingen St.-Gallener Straße" />
+            <option value="Ulm Blautal-Center" />
+            <option value="Grimmelfingen Eisenbahnstraße" />
+            <option value="Ulm Kienlesberg" />
+            <option value="Lehr Mariusweg" />
+            <option value="Ulm Safranberg" />
+            <option value="Gögglingen Riedlenstraße" />
+            <option value="Ulm Mecklenburgweg" />
+            <option value="Ulm Bleicher Hag" />
+            <option value="Ulm Am Roten Berg" />
+            <option value="Ulm Neuer Friedhof" />
+            <option value="Neu-Ulm Fachoberschule" />
+            <option value="Ulm ZOB West" />
+            <option value="Wiblingen Erenlauh" />
+            <option value="Ulm Gewerbeschulen Königstraße" />
+            <option value="Ulm Keplerstraße" />
+            <option value="Ulm Traminerweg" />
+            <option value="Ulm Beim Türmle" />
+            <option value="Dellmensingen Kirche" />
+            <option value="Ulm Herdbruckerstraße" />
+            <option value="Jungingen Beimerstetter Straße" />
+            <option value="Donaustetten Wollgrasweg" />
+            <option value="Ulm Königstraße" />
+            <option value="Ulm Botanischer Garten" />
+            <option value="Mähringen Alte Straße" />
+            <option value="Ulm Schillerhöhe" />
+            <option value="Neu-Ulm ZUP" />
+            <option value="Ulm Torstraße" />
+            <option value="Ulm Sportzentrum TSG" />
+            <option value="Ulm Lindenhöhe" />
+            <option value="Ulm Heilmeyersteige" />
+            <option value="Ulm ZOB Ost" />
+            <option value="Neu-Ulm Adenauerbrücke" />
+            <option value="Ulm Rosengasse" />
+            <option value="Ulm Auf der Laue" />
+            <option value="Jungingen Franzenhauserweg" />
+            <option value="Lehr Industriestraße" />
+            <option value="Ulm Kliniken Michelsberg" />
+            <option value="Neu-Ulm Arena" />
+            <option value="Ulm Franz-Wiedemeier-Straße" />
+            <option value="Ulm Lehrer Tal" />
+            <option value="Ulm Theodor-Heuss-Platz" />
+            <option value="Ulm Kliniken Wissenschaftsstadt" />
+            <option value="Ulm Frauenstraße" />
+            <option value="Ulm Hauptbahnhof" />
+            <option value="Ulm Ruländerweg" />
+            <option value="Donautal Dornierstraße" />
+            <option value="Einsingen Ensostraße" />
+            <option value="Ulm Magirusstraße" />
+            <option value="Donaustetten Am Hohen Rain" />
+            <option value="Lehr Wengenholz/Sportpark Nord" />
+            <option value="Jungingen Schwarzenbergstraße" />
+            <option value="Donautal Kastbrücke" />
+            <option value="Ulm Justizgebäude" />
+            <option value="Ulm Ruländerweg" /> </datalist>
+    </main>
+    <footer>
+        Copyright WebEng 2019, Maybe rights are reserved
+    </footer>
+</body>
+
+</html>
+[Done] exited with code=0 in 0.182 seconds
