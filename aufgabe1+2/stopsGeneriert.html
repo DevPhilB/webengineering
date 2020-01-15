@@ -1,0 +1,685 @@
+[Running] php "c:\Users\Leumas\Desktop\WebEngineering\ProjektWeb\webengineering\aufgabe1+2\stops.php"
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>WebEng 2019 - Haltestellen</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Web Engineering Routenplaner</h1>
+        <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a class="active" href="stops.php">Stops</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="stop-content">
+        <aside class="map-sidebar">
+            <div id="map">
+                <img src="map.png" alt="Ansicht der Haltestelle in Google Maps">
+            </div>
+        </aside>
+        <section class="filter">
+            <div id="filterInputWrap"><input type="text" id="filterBox" placeholder="Filter" /></div>
+            <div class="stoplist">
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Rathaus</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Reutlinger Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Sonnenstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Blücherstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ostplatz</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Einsingen Hohe Steige</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Fichtenstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Söflingen</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ludwigsfeld Hafnerweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Pranger</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Örlinger Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Eugen-Bolz-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Gögglingen Zollbrücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Stadtwerke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donaustetten Illerkirchberg Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Dellmensingen Hirsch</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Steinerne Brücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Leonberger Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Donau-Iller-Werkstätten</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm St.-Jakob-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Ernst-Abbe-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Siemensstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Barbaralinde</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Memminger Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Hans-Reyhing-Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Multscherschule</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Lise-Meitner-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Sonnenfeld</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Kirche Harthausen</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ludwig-Beck-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Riedwiesenweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Virchowstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Eggingen Rathaus</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Albstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Haßlerstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ehrensteiner Feld</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Einsingen Hirsch</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Daimlerstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Hausstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Steinhövelstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Königstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Gehrnstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Rathaus</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ermingen Waldstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Donaustadion</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Manfred-Börner-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Eselsberg Hasenkopf</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ludwigsfeld Danziger Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Universität West</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Schongauer Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Grimmelfingen Häberlinweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Mähringen Rathaus</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Örlinger Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ludwigsfeld Katholische Kirche</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Söflingen</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Grimmelfingen Rathausstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Manfred-Börner-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Edith-Stein-Ring</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Einsingen Bahnübergang</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Neue Hochschule</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Harthauser Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Liststraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Lupferbrücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Graf-Arco-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Dellmensingen Ulmer Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Fischerhauser Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Einsingen Kirche</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Science Park III</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Oberer Wirt</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Sedanstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Theater</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Hans-Lorenser-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Beringerbrücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Dellmensingen Ulmer Straße 7</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Lindenhöhe</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ottiliengasse</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Söflinger Weinberge</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Grimmelfinger Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Fünf-Bäume-Weg Mitte</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Staufenring</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Benzstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ehinger Tor</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Nicolaus-Otto-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Jakobsruhe</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ludwigsfeld Reichenberger Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Science Park II</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ostpreußenweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Kapelle</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Oberer Kuhberg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Jägerstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Lehr Loherstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Steinbeisstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donaustetten Am Kraftwerk</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Universität Süd</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Hörvelsinger Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Gleißelstetten</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Thüringenweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Kemptener Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Hochschule</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Römerplatz</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Willy-Brandt-Platz</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Donaubad</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ensingerstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Edisoncenter</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Veltlinerweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Tannenplatz Zentrum</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Maienweg Nord</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Lehr Rührweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Kelternweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Heuweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Eichberg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Lichternsee</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Eichberg Nord</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Eggingen Ringinger Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Martin-Luther-Kirche</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Auf der Gölde</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Kuhberg Schulzentrum</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Alte Siedlung</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ermingen Panoramastraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Donauhalle</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Donautal</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Boschstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Gögglingen Hoher Berg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Wohnpark Friedrichsau</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Alfred-Delp-Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Beim B'scheid</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Grimmelfingen Häberlinweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Burgunderweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Mähringen Wendeschleife</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Sulzbachweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Albecker Steige</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen St.-Gallener-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm St.-Elisabeth-Kirche</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Universität West</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Fünf-Bäume-Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ludwigsfeld Hasenweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Hafengasse</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Eichenplatz</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Saarlandstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Steinhövelstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Wiley Süd</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Maybachstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Bahnhof Söflingen</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Grimmelfingen Halteplatz Donautal</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Auf dem Hart</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Rathaus</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ludwigsfeld Allgäuer Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Illerbrücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ermingen Allewind</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Haslacher Weg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Steinerne Brücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Margarete-Steiff-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Ostermahdweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Clarissenstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Saulgauer Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Egertweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Oberer Roter Berg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Maienweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Petrusplatz</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen St.-Gallener Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Blautal-Center</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Grimmelfingen Eisenbahnstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Kienlesberg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Lehr Mariusweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Safranberg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Gögglingen Riedlenstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Mecklenburgweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Bleicher Hag</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Am Roten Berg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Neuer Friedhof</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Fachoberschule</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm ZOB West</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Wiblingen Erenlauh</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Gewerbeschulen Königstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Keplerstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Traminerweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Beim Türmle</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Dellmensingen Kirche</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Herdbruckerstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Beimerstetter Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donaustetten Wollgrasweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Königstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Botanischer Garten</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Mähringen Alte Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Schillerhöhe</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm ZUP</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Torstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Sportzentrum TSG</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Lindenhöhe</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Heilmeyersteige</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm ZOB Ost</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Adenauerbrücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Rosengasse</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Auf der Laue</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Franzenhauserweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Lehr Industriestraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Kliniken Michelsberg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Neu-Ulm Arena</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Franz-Wiedemeier-Straße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Lehrer Tal</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Theodor-Heuss-Platz</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Kliniken Wissenschaftsstadt</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Frauenstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Hauptbahnhof</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ruländerweg</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Dornierstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Einsingen Ensostraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Magirusstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donaustetten Am Hohen Rain</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Lehr Wengenholz/Sportpark Nord</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Jungingen Schwarzenbergstraße</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Donautal Kastbrücke</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Justizgebäude</div> <input type="checkbox" class="favinput" />
+                </div>
+                <div class="stopentry">
+                    <div class="stop-caption">Ulm Ruländerweg</div> <input type="checkbox" class="favinput" />
+                </div>
+            </div>
+        </section>
+        </div>
+    </main>
+    <footer>
+        Copyright WebEng 2019, Maybe rights are reserved
+    </footer>
+</body>
+
+</html>
+[Done] exited with code=0 in 0.169 seconds
