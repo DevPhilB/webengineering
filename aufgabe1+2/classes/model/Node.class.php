@@ -4,6 +4,11 @@
     class Node{
         private $id;
         private $edges;
+        // 1. a)
+        private $cost = INF; // distane to the startnode.
+        private $preNode;  //node that we allready visit bevor.
+        private $preLine;  // line we drive to this node.
+        private $visited = false; // is node already visit;
 
         //constructs a new instance
         function __construct($id){
@@ -30,6 +35,22 @@
                 if ($edge->getEndNode() === $endNode)
                     return $edge;
             }
+        }
+
+        function getCost(){
+            return $this->cost;
+        }
+
+        function getPreNode(){
+            return $this->preNode;
+        }
+
+        function getPreLine(){
+            return $this->preLine;
+        }
+
+        function getVisited(){
+            return $this->visited;
         }
     }
 ?>
