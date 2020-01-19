@@ -22,7 +22,7 @@ class Dijkstra
     // 1. c) parameter endNode calculate 
     function getPath($endNode)
     {
-
+        // TODO: Find a cheapest way to the dijkstra graph. 
         if ($endNode->getCost() == INF) {
             return null;
         }
@@ -67,9 +67,7 @@ class Dijkstra
             $node = $edge->getEndNode();
             if ($node->getVisited() == false) {
                 $node->setPreLine($edge->getLine());
-                // new costs -> TODO: add cost from waiting
-                // TODO: check the departures, you need here startTime.
-                $costs = $edge->getCost() + $startNode->getCost();
+                $costs = $edge->getCost() + $startNode->getCost() + $this->getNextDepatureCost($startNode, $startTime, $node);
                 $node->setCost($costs);
                 $node->setPreNode($startNode);
                 $this->process[] = $node;
@@ -77,14 +75,20 @@ class Dijkstra
         }
     }
 
+    // returns the additional costs.
+    function getNextDepatureCost($node, $startTime, $edge){
+        $getter = new Getter();
+        $id = $node->getId();
+        $departures = $getter->getDepartures($id, $startTime);
+        return $departures->getDelay($$edge->getLine(), $startTime);
+    }
 
-
+    // Sets nodes and pre nodes and the costs.
     function dijkstra($graph, $startNode, $startTime)
     {
         $startNode->setCost(0);
         array_push($this->process, $startNode);
 
-        $pathNodes = array();
         while (count($this->process) > 0) {
             // this node is again the startnode //do this until process is empty;
             $node =  $this->extractMinimum($this->process);
