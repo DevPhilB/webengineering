@@ -1,5 +1,5 @@
 <?php
-// require_once("model/Node.php");
+require_once("Getter.class.php");
 class Dijkstra
 {
 
@@ -22,8 +22,7 @@ class Dijkstra
     // 1. c) parameter endNode calculate 
     function getPath($endNode)
     {
-        $pathNodes = array(); //TODO: get dijkstra startNode from dijkstra algo
-
+        $pathNodes = array();
         while ($endNode->getPreNode() != null) {
             if ($endNode->getCost() == INF) {
                 echo "no path found";
@@ -46,11 +45,12 @@ class Dijkstra
         foreach ($process as $key => $node) {
 
             if ($node->getCost() < $value) {
+                // ONLY PRINT TODO: Remove at the end.
                 if ($lessCostNode != null) {
-                    print_r("\n Less node: " . $lessCostNode->getId() . " value: " . strval($lessCostNode->getCost()));
+                     print_r("\n Less node: " . $lessCostNode->getId() . " value: " . strval($lessCostNode->getCost()));
                 }
                 $value = $node->getCost();
-                print_r("Is better: " . $node->getId() . " value: " . $value  . "\n");
+                // print_r("Is better: " . $node->getId() . " value: " . $value  . "\n");
 
                 $lessCostNode = $node;
                 $elementKey = $key;
@@ -71,7 +71,7 @@ class Dijkstra
             $node = $edge->getEndNode();
             if ($node->getVisited() == false) {
                 $node->setPreLine($edge->getLine());
-                $costs = $edge->getCost() + $startNode->getCost() + $this->getNextDepatureCost($startNode, $startTime, $node);
+                $costs = $edge->getCost() + $startNode->getCost() + $this->getNextDepatureCost($startNode, $startTime, $edge);
                 $node->setCost($costs);
                 $node->setPreNode($startNode);
                 $this->process[] = $node;
@@ -82,11 +82,13 @@ class Dijkstra
     // returns the additional costs.
     function getNextDepatureCost($node, $startTime, $edge)
     {
-        // Enable to test myTestDijkstra return 0;
+
+        // return 0;
+        // Enable to test myTestDijkstra return 0
         $getter = new Getter();
         $id = $node->getId();
         $departures = $getter->getDepartures($id, $startTime);
-        return $departures->getDelay($$edge->getLine(), $startTime);
+        return $departures->getDelay($edge->getLine()->getId(), $startTime);
     }
 
     // Sets nodes and pre nodes and the costs.
