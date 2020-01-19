@@ -16,6 +16,7 @@
             $this->edges = array();
         }
 
+
         //adds an outgoing edge to the node
         function addEdge($edge){
             array_push($this->edges, $edge);
@@ -52,5 +53,25 @@
         function getVisited(){
             return $this->visited;
         }
+
+        function setCost($cost){
+            $this->cost = $cost;
+        }
+
+        function setPreNode($preNode){
+            $this->preNode =$preNode;
+        }
+
+        function setPreLine($preLine){
+            $this->preLine=$preLine;
+        }
+
+        function setVisited($visited){
+            $this->visited= $visited;
+        }
+
+        
+        public function print(){
+            echo "From " . $this->id . " edges " . count($this->edges) . " cost ". $this->cost  .".\n";
+        }
     }
-?>

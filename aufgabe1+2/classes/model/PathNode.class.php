@@ -23,5 +23,9 @@
         function getLine(){
             return $this->line;
         }
+
+        public function print(){
+            echo "From " . $this->id . " cost " . $this->cost . " line ". $this->line->getId()  .".\n";
+        }
     }
 ?>

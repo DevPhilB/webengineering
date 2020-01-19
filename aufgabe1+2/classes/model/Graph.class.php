@@ -40,8 +40,13 @@
             foreach($node->getEdges() as $edge){
               echo $edge->getEndNode()->getId() . " ";
             }
-            echo "<br>";
+            echo "\n";
           }
+        }
+
+        // Wiki example
+        public function getNodes(){
+            return $this->nodes;
         }
     }
 ?>
