@@ -39,10 +39,17 @@ $graph->print();
 
 echo "\n \n";
 // Find path from 1 to 8.
-echo "Search path... \n";
+echo "Create dijkstra... \n";
 $searcher = new Dijkstra();
 
 $searcher->dijkstra($graph, $graph->findNode(1) ,2);
 
+
+echo "Search path... \n";
+$pathNodes = $searcher->getPath($graph->findNode(5));
+
+foreach($pathNodes as $pathNode){
+    $pathNode->print();
+}
 
 ?>

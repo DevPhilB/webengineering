@@ -22,14 +22,18 @@ class Dijkstra
     // 1. c) parameter endNode calculate 
     function getPath($endNode)
     {
-        // TODO: Find a cheapest way to the dijkstra graph. 
-        if ($endNode->getCost() == INF) {
-            return null;
-        }
+        $pathNodes = array(); //TODO: get dijkstra startNode from dijkstra algo
 
-        if ($endNode->getPreNode() == null) {
-            // start node was found.
+        while ($endNode->getPreNode() != null) {
+            if ($endNode->getCost() == INF) {
+                echo "no path found";
+                return null;
+            }else{
+                $pathNodes[] = $endNode;
+                $endNode = $endNode->getPreNode();
+            }
         }
+        return $pathNodes;
     }
 
 
@@ -76,7 +80,9 @@ class Dijkstra
     }
 
     // returns the additional costs.
-    function getNextDepatureCost($node, $startTime, $edge){
+    function getNextDepatureCost($node, $startTime, $edge)
+    {
+        // Enable to test myTestDijkstra return 0;
         $getter = new Getter();
         $id = $node->getId();
         $departures = $getter->getDepartures($id, $startTime);

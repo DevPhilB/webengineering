@@ -25,7 +25,7 @@
         }
 
         public function print(){
-            echo "From " . $this->id . " cost " . $this->cost . " line ". $this->line->getId()  .".\n";
+            echo "Id " . $this->id . " cost " . $this->cost . " line ". $this->line->getId()  .".\n";
         }
     }
 ?>
