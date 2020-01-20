@@ -5,9 +5,11 @@ class Dijkstra
 
 
     private $process = array();
+    private $getter = null;
     //constructs a new instance
     function __construct()
     {
+        $this->getter = new Getter();
     }
 
     // 1. b) time DateTime object, minutes just a number
@@ -23,7 +25,7 @@ class Dijkstra
     function getPath($endNode)
     {
         $pathNodes = array();
-        while ($endNode->getPreNode() != null) {
+        while ($endNode != null) {
             if ($endNode->getCost() == INF) {
                 echo "no path found";
                 return null;
@@ -32,7 +34,7 @@ class Dijkstra
                 $endNode = $endNode->getPreNode();
             }
         }
-        return $pathNodes;
+        return array_reverse($pathNodes);
     }
 
 
@@ -43,21 +45,20 @@ class Dijkstra
         $value = 1000;
         $lessCostNode = null;
         foreach ($process as $key => $node) {
-
             if ($node->getCost() < $value) {
                 // ONLY PRINT TODO: Remove at the end.
                 if ($lessCostNode != null) {
-                     print_r("\n Less node: " . $lessCostNode->getId() . " value: " . strval($lessCostNode->getCost()));
+                    //  print_r("\n Less node: " . $lessCostNode->getId() . " value: " . strval($lessCostNode->getCost()));
                 }
                 $value = $node->getCost();
                 // print_r("Is better: " . $node->getId() . " value: " . $value  . "\n");
-
                 $lessCostNode = $node;
                 $elementKey = $key;
+             
             }
         }
-
-        array_splice($this->process, $elementKey);
+        // echo " \n Remove " . $this->process[$elementKey]->getId() . " costs: " . $this->process[$elementKey]->getCost() . "\n";
+        array_splice($this->process,  $elementKey, 1);
         return $lessCostNode;
     }
 
@@ -74,7 +75,8 @@ class Dijkstra
                 $costs = $edge->getCost() + $startNode->getCost() + $this->getNextDepatureCost($startNode, $startTime, $edge);
                 $node->setCost($costs);
                 $node->setPreNode($startNode);
-                $this->process[] = $node;
+                array_push($this->process, $node);
+                // $this->process[] = $node;
             }
         }
     }
@@ -83,11 +85,11 @@ class Dijkstra
     function getNextDepatureCost($node, $startTime, $edge)
     {
 
-        // return 0;
+        return 0;
         // Enable to test myTestDijkstra return 0
-        $getter = new Getter();
+        
         $id = $node->getId();
-        $departures = $getter->getDepartures($id, $startTime);
+        $departures = $this->getter->getDepartures($id, $startTime);
         return $departures->getDelay($edge->getLine()->getId(), $startTime);
     }
 
@@ -96,12 +98,16 @@ class Dijkstra
     {
         $startNode->setCost(0);
         array_push($this->process, $startNode);
-
+        echo "\n dijkstra start takes some minutes...";
         while (count($this->process) > 0) {
             // this node is again the startnode //do this until process is empty;
             $node =  $this->extractMinimum($this->process);
+            // echo "\n Process count  1: " . count($this->process) ."->";
             $this->setupNeighbour($node, $startTime);
+            // echo "\n Process count  2: " . count($this->process) ."->";
             $node->setVisited(true);
+            // echo "\n Process count  3: " . count($this->process) ."->";
+           
         }
 
         echo "\n dijkstra ende.";

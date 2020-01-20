@@ -14,8 +14,8 @@
     // } else{
         // $s = $_GET['s'];
         // $e = $_GET['e'];
-        $s= 93;
-        $e =160;
+        $s= 70;
+        $e =25;
         $a = new Getter();
         $graph = $a->getGraph();
         $start = $graph->findNode($s);
@@ -31,7 +31,7 @@
         else{
             //obtain current point of time as a reference
             $startTime = new DateTime();
-	    $startTime->setTime(15, 00); // for better comparison, use 15:00
+	  //  $startTime->setTime(15, 00); // for better comparison, use 15:00
         $d = new Dijkstra();
             //get costs via dijkstra
             $costs = $d->dijkstra($graph, $start, $startTime);

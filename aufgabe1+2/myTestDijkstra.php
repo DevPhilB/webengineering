@@ -46,7 +46,7 @@ $searcher->dijkstra($graph, $graph->findNode(1) ,2);
 
 
 echo "Search path... \n";
-$pathNodes = $searcher->getPath($graph->findNode(5));
+$pathNodes = $searcher->getPath($graph->findNode(6));
 
 foreach($pathNodes as $pathNode){
     $pathNode->print();
