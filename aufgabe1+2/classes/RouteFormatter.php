@@ -6,6 +6,7 @@ function formatRoute($path, $start, $end, $startTime){
     if($path == null){
         return null;
     }
+    $a = new Dijkstra();
     //assemble output object, order by line taken from point to point
     //this is to alleviate some pressure from the frontend
     $root = array();
@@ -23,7 +24,7 @@ function formatRoute($path, $start, $end, $startTime){
             );
         }
         //push current stop onto the current trip
-        array_push($current["trip"], array("time" => addTime($startTime, $pnode->getCost())->format("H:i"), "stop" => $pnode->getId()));
+        array_push($current["trip"], array("time" => $a->addTime($startTime, $pnode->getCost())->format("H:i"), "stop" => $pnode->getId()));
         //if we need to take a different line to the next stop, create a new trip
         if($cline != $pnode->getLine()->getId()){
             if($current != null){

@@ -41,11 +41,12 @@
             //obtain the optimal path from the costs
             $path = $d->getPath($end);
 
-            echo "\n solution " . count($path) . " :countende";
+            echo "\n solution " . count($path) . " :countende \n";
             foreach($path as $pathNode){
                 $pathNode->print();
-                echo "go";
             }
+
+             $formattedPath = formatRoute($path, $start, $end, $startTime);
             // $formattedPath = formatRoute($path, $start, $end, $startTime);
 
             // if($formattedPath === null){

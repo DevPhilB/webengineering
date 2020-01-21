@@ -1,0 +1,23 @@
+Ergebnis von testDijkstra
+
+original time: 17:23:02<br>
+original time after add: 17:23:02<br>
+new time after adding 5 min: 17:28:02<br>
+<br>Pfad (s=93, e=70): <br>
+93 (cost: 0, line: 8) <br>
+46 (cost: 2, line: 2) <br>
+25 (cost: 9, line: 2) <br>
+199 (cost: 10, line: 2) <br>
+13 (cost: 12, line: 2) <br>
+70 (cost: 13, line: -1) <br>
+<br>Min Kosten: 1 min ID: 2 . <br>
+
+mysearch.php
+ dijkstra start...
+ dijkstra end.
+ solution 5 :countende 
+Id 70 cost 0 line 29.
+Id 13 cost 1 line 22.
+Id 162 cost 2 line 22.
+Id 199 cost 3 line 12.
+Id 25 cost 4 line -1.

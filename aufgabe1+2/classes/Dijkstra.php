@@ -1,4 +1,5 @@
 <?php
+require_once("model/PathNode.class.php");
 require_once("Getter.class.php");
 class Dijkstra
 {
@@ -18,19 +19,28 @@ class Dijkstra
         $timeClone = clone ($time);
         $timeClone->add(new DateInterval("PT" . $minutes . "M"));
         return $timeClone;
-        // return DateTime
     }
 
     // 1. c) parameter endNode calculate 
     function getPath($endNode)
     {
         $pathNodes = array();
+        $oldEndNode = 0;
+        $preline = null;
         while ($endNode != null) {
             if ($endNode->getCost() == INF) {
                 echo "no path found";
                 return null;
             }else{
-                $pathNodes[] = $endNode;
+                if($oldEndNode == 0){
+                    array_push($pathNodes, new PathNode($endNode->getId(), $endNode->getCost(), new Line(-1,-1,-1)));
+                    $preline = $endNode->getPreLine();
+                    $oldEndNode++;
+                }
+                else{
+                    array_push($pathNodes, new PathNode($endNode->getId(), $endNode->getCost(), $preline));
+                    $preline = $endNode->getPreLine();
+                }
                 $endNode = $endNode->getPreNode();
             }
         }
@@ -46,24 +56,16 @@ class Dijkstra
         $lessCostNode = null;
         foreach ($process as $key => $node) {
             if ($node->getCost() < $value) {
-                // ONLY PRINT TODO: Remove at the end.
-                if ($lessCostNode != null) {
-                    //  print_r("\n Less node: " . $lessCostNode->getId() . " value: " . strval($lessCostNode->getCost()));
-                }
                 $value = $node->getCost();
-                // print_r("Is better: " . $node->getId() . " value: " . $value  . "\n");
                 $lessCostNode = $node;
                 $elementKey = $key;
-             
             }
         }
-        // echo " \n Remove " . $this->process[$elementKey]->getId() . " costs: " . $this->process[$elementKey]->getCost() . "\n";
         array_splice($this->process,  $elementKey, 1);
         return $lessCostNode;
     }
 
 
-    // 2. a)
     // Sets the values for a node and der preNodes.
     function setupNeighbour($startNode, $startTime)
     {
@@ -71,12 +73,20 @@ class Dijkstra
         foreach ($edges as $edge) {
             $node = $edge->getEndNode();
             if ($node->getVisited() == false) {
-                $node->setPreLine($edge->getLine());
-                $costs = $edge->getCost() + $startNode->getCost() + $this->getNextDepatureCost($startNode, $startTime, $edge);
-                $node->setCost($costs);
-                $node->setPreNode($startNode);
-                array_push($this->process, $node);
-                // $this->process[] = $node;
+                $costs = $edge->getCost() + $startNode->getCost();
+                $costs = $costs + $this->getNextDepatureCost($startNode, $this->addTime($startTime, $costs), $edge);
+                if ($node->getCost() < $costs) {
+                    $node->setCost($costs);
+                    $node->setPreLine($edge->getLine());
+                    $startNode->setPreLine($edge->getLine());
+                    $node->setPreNode($startNode);
+                }else{
+                    $node->setCost($costs);
+                    $node->setPreLine($edge->getLine());
+                    $startNode->setPreLine($edge->getLine());
+                    $node->setPreNode($startNode);
+                    array_push($this->process, $node);
+                }
             }
         }
     }
@@ -84,32 +94,24 @@ class Dijkstra
     // returns the additional costs.
     function getNextDepatureCost($node, $startTime, $edge)
     {
-
-        return 0;
-        // Enable to test myTestDijkstra return 0
-        
-        $id = $node->getId();
+    return 0;
+        $id = $node->getId(); // works not, show moodle.
         $departures = $this->getter->getDepartures($id, $startTime);
         return $departures->getDelay($edge->getLine()->getId(), $startTime);
     }
 
+        // 2. a)
     // Sets nodes and pre nodes and the costs.
     function dijkstra($graph, $startNode, $startTime)
     {
         $startNode->setCost(0);
         array_push($this->process, $startNode);
-        echo "\n dijkstra start takes some minutes...";
+        echo "\n dijkstra start...";
         while (count($this->process) > 0) {
-            // this node is again the startnode //do this until process is empty;
             $node =  $this->extractMinimum($this->process);
-            // echo "\n Process count  1: " . count($this->process) ."->";
-            $this->setupNeighbour($node, $startTime);
-            // echo "\n Process count  2: " . count($this->process) ."->";
+            $this->setupNeighbour($node, $startTime); // check the edges and calculates the cost.
             $node->setVisited(true);
-            // echo "\n Process count  3: " . count($this->process) ."->";
-           
         }
-
-        echo "\n dijkstra ende.";
+        echo "\n dijkstra end.";
     }
 }

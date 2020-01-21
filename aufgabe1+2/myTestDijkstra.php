@@ -42,7 +42,7 @@ echo "\n \n";
 echo "Create dijkstra... \n";
 $searcher = new Dijkstra();
 
-$searcher->dijkstra($graph, $graph->findNode(1) ,2);
+$searcher->dijkstra($graph, $graph->findNode(1) ,new DateTime());
 
 
 echo "Search path... \n";
