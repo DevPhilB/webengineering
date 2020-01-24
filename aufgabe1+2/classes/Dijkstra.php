@@ -74,7 +74,7 @@ class Dijkstra
             $node = $edge->getEndNode();
             if ($node->getVisited() == false) {
                 $costs = $edge->getCost() + $startNode->getCost();
-                $costs = $costs + $this->getNextDepatureCost($startNode, $this->addTime($startTime, $costs), $edge);
+                // $costs = $costs + $this->getNextDepatureCost($startNode, $this->addTime($startTime, $costs), $edge);
                 if ($node->getCost() < $costs) {
                     $node->setCost($costs);
                     $node->setPreLine($edge->getLine());
@@ -92,12 +92,13 @@ class Dijkstra
     }
 
     // returns the additional costs.
-    function getNextDepatureCost($node, $startTime, $edge)
+    function getNextDepatureCost($node, $startTime)
     {
-    return 0;
+    // return 0;
         $id = $node->getId(); // works not, show moodle.
         $departures = $this->getter->getDepartures($id, $startTime);
-        return $departures->getDelay($edge->getLine()->getId(), $startTime);
+        $line = $departures->getDepartures()[0]->getLine();
+        return $departures->getDelay($line, $startTime);
     }
 
         // 2. a)
@@ -109,6 +110,8 @@ class Dijkstra
         echo "\n dijkstra start...";
         while (count($this->process) > 0) {
             $node =  $this->extractMinimum($this->process);
+            $cost = $node->getCost() + $this->getNextDepatureCost($node, $this->addTime($startTime, $node->getCost()));
+            $node->setCost($cost);
             $this->setupNeighbour($node, $startTime); // check the edges and calculates the cost.
             $node->setVisited(true);
         }
