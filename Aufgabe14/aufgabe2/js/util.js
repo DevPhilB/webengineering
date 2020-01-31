@@ -7,7 +7,7 @@ function load(url,
             onComplete(response.json());
         })
         .catch((error) => {
-            onError(error)
+            onError();
         });
 }
 
@@ -17,35 +17,38 @@ function onComplete(response) {
     alert(response);
 }
 
-function onError(error) {
+function onError() {
     // throws error
 }
 
 // 2b)
 myStorage = localStorage;
 
-function setFavorite(id) {
-    localStorage.setItem('id', id);
-}
-
 function getFavorite() {
     if (localStorage.length == 0) {
         return 0;
     }
-    return localStorage;
+    return localStorage.id;
 }
+
+
+function setFavorite(id, name) {
+    localStorage.setItem(id, name);
+}
+
 
 
 var stopList;
 // 2c) // http://morgal.informatik.uni-ulm.de:8000/line/stop
-function loadStops(callback) {
-
-    fetch("http://morgal.informatik.uni-ulm.de:8000/line/stop")
-        .then((response) => {
-            stopList = JSON.parse(response.json());
-            callback();
-        });
+function loadStops(id) {
+    // call load stop.
 }
+
+function loadStop(id) {
+    return fetch("http://morgal.informatik.uni-ulm.de:8000/line/stop/" + id + "/")
+        .then(response => response.json());
+}
+
 
 // 2d)
 function toId(string) {

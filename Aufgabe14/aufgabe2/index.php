@@ -20,6 +20,7 @@
             <h1>Web Engineering Routenplaner</h1>
             <nav>
               <ul>
+              <div id ="testInnerHtml"> blabla </div>
                   <li><a class="active" href="index.php">Home</a></li>
                   <li><a href="stops.php">Stops</a></li>
               </ul>
@@ -53,5 +54,12 @@
         <footer>
             Copyright WebEng 2019, Maybe rights are reserved
         </footer>
+
+                             <!-- 2) und 3) text. -->
+        <script src="/js/index.js"></script>
+        <script src="/js/util.js"></script>
+        <script type="text/javascript">
+                SomeFunction();
+                 </script>
     </body>
 </html>

@@ -7,6 +7,8 @@
         <title>WebEng 2019 - Haltestellen</title>
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="style.css">
+        <!-- 2) text. -->
+        <script src="js/util.js"></script>
     </head>
     <body>
         <?php
